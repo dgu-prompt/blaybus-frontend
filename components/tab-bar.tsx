@@ -38,7 +38,7 @@ export function TabBar() {
   return (
     <>
       <div className="grow" />
-      <Container className="pb-safe translucent sticky bottom-0 z-50 border-t">
+      <Container className="pb-safe translucent sticky bottom-0 z-50 border-t bg-background/50">
         <Wrapper className="h-12">
           <div className="grid h-full w-full grid-cols-3 items-center">
             {tabs.map((tab, index) => (

@@ -26,7 +26,7 @@ export function NavigationBar({
   actionButton?: React.ReactNode;
 }) {
   return (
-    <Container className="pt-safe translucent sticky top-0 z-50 border-b">
+    <Container className="pt-safe translucent sticky top-0 z-50 border-b bg-background/50">
       <Wrapper className="h-11">
         <div className="px-safe-or-4 grid h-full grid-cols-3 items-center">
           <div className="flex justify-start">

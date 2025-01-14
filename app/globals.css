@@ -129,7 +129,7 @@ body {
   }
 
   .translucent {
-    --tw-bg-opacity: 0.8 !important;
+    /* --tw-bg-opacity: 0.95 !important; */
     backdrop-filter: saturate(180%) blur(20px);
   }
 }
