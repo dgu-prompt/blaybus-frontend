@@ -1,5 +1,3 @@
-"use client";
-
 import { List, ListItem, ListLink, Section } from "@/components/grouped-list";
 import { NavigationBar } from "@/components/navigation-bar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
