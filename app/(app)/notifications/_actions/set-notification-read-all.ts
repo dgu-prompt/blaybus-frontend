@@ -2,9 +2,9 @@
 
 import { fetchWithAuth } from "@/lib/fetch";
 
-export async function setNotificationRead(id: string) {
+export async function setNotificationReadAll() {
   try {
-    const response = await fetchWithAuth(`/api/notifications/${id}/read`, {
+    const response = await fetchWithAuth(`/api/notifications/read-all`, {
       method: "PUT",
     });
 
@@ -15,7 +15,7 @@ export async function setNotificationRead(id: string) {
       throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
 
-    console.log(`Notification ${id} set as read successfully.`);
+    console.log(`All notification set as read successfully.`);
   } catch (error: unknown) {
     // 에러 핸들링
     if (error instanceof Error) {

@@ -5,6 +5,8 @@ import { getNotifications } from "./_actions/get-notifications";
 import { getPushNotificationSettings } from "./_actions/get-push-notification-settings";
 import { PushNotificationOnboarding } from "./_components/push-notification-onboarding";
 import { Container, Wrapper } from "@/components/container";
+import { setNotificationRead } from "./_actions/set-notification-read";
+import { NotificationListItem } from "./_components/notification-list-item";
 
 export default async function Page() {
   const { fcmToken } = getPushNotificationSettings();
@@ -12,6 +14,7 @@ export default async function Page() {
 
   try {
     notifications = await getNotifications();
+    console.log(notifications);
   } catch (error) {
     console.error("Failed to load notifications:", error);
   }
@@ -31,18 +34,10 @@ export default async function Page() {
       <List>
         <Section header="최근 7일간 알림">
           {notifications.map((notification: any) => (
-            <ListItem
+            <NotificationListItem
               key={notification.notificationId}
-              containerClassName="active:bg-accent"
-            >
-              <button className="text-left">
-                {notification.is_read ? "read" : "new"}
-                {notification.content} - {notification.type} -{" "}
-                {/* <UpdateNotificationButton
-                action={`mark-read/${notification.id}`}
-              /> */}
-              </button>
-            </ListItem>
+              notification={notification}
+            />
           ))}
         </Section>
         <Section header=" ">
