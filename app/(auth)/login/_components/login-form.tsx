@@ -1,74 +1,100 @@
 "use client";
 
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { GalleryVerticalEnd } from "lucide-react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { toast } from "sonner";
+import { redirect } from "next/navigation";
+
+const loginSchema = z.object({
+  username: z.string().min(2, "아이디는 최소 2자 이상이어야 합니다."),
+  password: z.string().min(4, "비밀번호는 최소 4자 이상이어야 합니다."),
+});
+
+type LoginSchema = z.infer<typeof loginSchema>;
 
 export function LoginForm({
   onSubmit,
 }: {
-  onSubmit: (formData: FormData) => Promise<{ token: string }>;
+  onSubmit: (data: LoginSchema) => Promise<void>;
 }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const form = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError(null);
-    setIsSubmitting(true);
-
-    const formData = new FormData(e.currentTarget);
-    console.log("Logging in with form data:", formData);
-    console.log("Logging in with form data:", formData.username);
-
+  const handleFormSubmit = async (values: LoginSchema) => {
     try {
-      const result = await onSubmit(formData);
-      console.log("Login successful! Token:", result.token);
-    } catch (err) {
-      setError(err.message || "Something went wrong");
-      toast.error(err.message);
-    } finally {
-      setIsSubmitting(false);
+      await onSubmit(values);
+      toast.success("로그인 성공!");
+      redirect("/home");
+    } catch (error: any) {
+      toast.error(error?.message || "로그인 실패");
     }
   };
 
   return (
-    <form className={cn("flex flex-col gap-8")} onSubmit={handleSubmit}>
-      <div className="flex flex-col items-center gap-2">
-        <a href="#" className="flex flex-col items-center gap-2 font-semibold">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md">
-            <GalleryVerticalEnd className="size-6" />
-          </div>
-          <span className="sr-only">Acme Inc.</span>
-        </a>
-        <h1 className="text-xl font-bold">Welcome to Acme Inc.</h1>
-        <p className="text-center text-sm text-muted-foreground">
-          Enter your user ID below to login to your account
-        </p>
-      </div>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleFormSubmit)}
+        className="space-y-6"
+      >
+        <div className="text-center">
+          <h1 className="text-xl font-bold">로그인</h1>
+          <p className="text-sm text-muted-foreground">
+            아래 정보를 입력해 주세요.
+          </p>
+        </div>
 
-      <div className="flex flex-col gap-6">
-        <div className="grid gap-2">
-          <Label htmlFor="username">User ID</Label>
-          <Input
-            id="username"
-            type="text"
-            placeholder="Enter your username"
-            required
-          />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" required />
-        </div>
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>아이디</FormLabel>
+              <FormControl>
+                <Input placeholder="아이디를 입력하세요" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>비밀번호</FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  placeholder="비밀번호를 입력하세요"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button type="submit" className="w-full">
-          Login
+          로그인
         </Button>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 }

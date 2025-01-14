@@ -1,9 +1,9 @@
 "use client";
 
-import { List, ListItem, ListSpacer, Section } from "@/components/list";
+import { List, ListItem, ListLink, Section } from "@/components/grouped-list";
 import { NavigationBar } from "@/components/navigation-bar";
-import { SettingsButton } from "./_components/settings-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { SettingsButton } from "./_components/settings-button";
 
 const userData = {
   id: "2023010101",
@@ -38,66 +38,19 @@ export default function Page() {
               <span className="text-xl font-semibold">김민수</span>
             </div>
           </ListItem>
-          <ListItem action="#">아바타 변경하기</ListItem>
+          <ListLink title="아바타 변경하기" href="#" />
         </Section>
         <Section header="내 정보">
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>이름</span>
-              <span className="text-muted-foreground">{userData.name}</span>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>사번</span>
-              <span className="text-muted-foreground">{userData.id}</span>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>입사일</span>
-              <span className="text-muted-foreground">{userData.joinDate}</span>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>소속</span>
-              <span className="text-muted-foreground">
-                {userData.department}
-              </span>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>직무그룹</span>
-              <span className="text-muted-foreground">{userData.jobGroup}</span>
-            </div>
-          </ListItem>
+          <ListItem title="이름" detail={userData.name} />
+          <ListItem title="사번" detail={userData.id} />
+          <ListItem title="입사일" detail={userData.joinDate} />
+          <ListItem title="소속" detail={userData.department} />
+          <ListItem title="직무그룹" detail={userData.jobGroup} />
         </Section>
-        <Section header="경험치" footer=" ">
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>레벨</span>
-              <span className="text-muted-foreground">{userData.level}</span>
-            </div>
-          </ListItem>
-          <ListItem>
-            <div className="flex w-full justify-between">
-              <span>총 경험치</span>
-              <span className="text-muted-foreground">
-                {userData.totalExp} do
-              </span>
-            </div>
-          </ListItem>
+        <Section header="경험치">
+          <ListItem title="레벨" detail={userData.level} />
+          <ListItem title="총 경험치" detail={`${userData.totalExp} do`} />
         </Section>
-        {/* <Section header=" " footer=" ">
-          <ListItem action="/settings/accounts/change-password">
-            비밀번호 변경
-          </ListItem>
-          <ListItem className="text-destructive" action={() => {}}>
-            로그아웃
-          </ListItem>
-        </Section> */}
       </List>
     </>
   );

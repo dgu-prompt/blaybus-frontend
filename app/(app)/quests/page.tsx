@@ -15,11 +15,11 @@ import JobQuestChartMonth from "./chart2";
 import LeaderQuestChart from "./chart3";
 import LeaderQuestChartMonth from "./chart4";
 import Link from "next/link";
-import MiniChart from "./minichart";
-import MiniChartLeader from "./minichart-leader";
-import MiniChartLeader2 from "./minichart-leader2";
-import MiniChartLeadertf from "./minichart-tf";
-import MiniChartLeaderhr from "./minichart-hr";
+import MiniChart from "../home/_components/job-quest-chart";
+import MiniChartLeader from "../home/_components/leader-quest-chart";
+import MiniChartLeader2 from "../home/_components/minichart-leader2";
+import MiniChartLeadertf from "../home/_components/project-quest-chart";
+import MiniChartLeaderhr from "../home/_components/hr-quest-chart";
 
 const quests = [
   { name: "팀 생산성 목표 달성", progress: 80, max: 100, medium: 50 },
