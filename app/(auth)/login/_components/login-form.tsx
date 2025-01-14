@@ -15,6 +15,10 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
+import { GalleryVerticalEnd } from "lucide-react";
+import { VStack } from "@/components/grouped-list";
+import Image from "next/image";
+import appIcon from "@/app/apple-icon.png";
 
 const loginSchema = z.object({
   username: z.string().min(2, "아이디는 최소 2자 이상이어야 합니다."),
@@ -49,52 +53,56 @@ export function LoginForm({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleFormSubmit)}
-        className="space-y-6"
-      >
-        <div className="text-center">
-          <h1 className="text-xl font-bold">로그인</h1>
-          <p className="text-sm text-muted-foreground">
-            아래 정보를 입력해 주세요.
+      <form onSubmit={form.handleSubmit(handleFormSubmit)}>
+        <div className="mb-10 flex flex-col items-center gap-2">
+          <a
+            href="#"
+            className="flex flex-col items-center gap-2 font-semibold"
+          >
+            <div className="mb-2 flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border">
+              {/* <GalleryVerticalEnd className="size-10" /> */}
+              <Image src={appIcon} alt={"icon"} width={64} height={64} />
+            </div>
+            <span className="sr-only">Acme Inc.</span>
+          </a>
+          <h1 className="text-2xl font-bold">두더디</h1>
+          <p className="text-center text-muted-foreground">
+            성장하는 당신의 모습을 두더디와 함께 확인해요!
           </p>
         </div>
+        <VStack className="gap-8">
+          <VStack className="gap-4">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="아이디" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>아이디</FormLabel>
-              <FormControl>
-                <Input placeholder="아이디를 입력하세요" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input type="password" placeholder="비밀번호" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </VStack>
 
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>비밀번호</FormLabel>
-              <FormControl>
-                <Input
-                  type="password"
-                  placeholder="비밀번호를 입력하세요"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit" className="w-full">
-          로그인
-        </Button>
+          <Button type="submit" className="w-full">
+            로그인
+          </Button>
+        </VStack>
       </form>
     </Form>
   );

@@ -55,7 +55,7 @@ export function List({
   className?: string;
 }) {
   return (
-    <Container className="bg-muted dark:bg-background">
+    <Container className="min-h-dvh bg-muted dark:bg-background">
       <Container as="ul" className={cn("my-4 gap-6", className)}>
         {children}
       </Container>

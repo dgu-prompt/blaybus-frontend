@@ -46,7 +46,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${pretendard.className} flex min-h-screen flex-col antialiased`}
+        className={`${pretendard.className} flex min-h-dvh flex-col antialiased`}
       >
         <ThemeProvider
           attribute="class"
