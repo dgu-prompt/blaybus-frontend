@@ -8,6 +8,7 @@ import { JobQuestSection } from "./_components/job-quest-section";
 import { ProjectQuestSection } from "./_components/project-quest-section";
 import ExperienceProgress from "./chart2";
 import { ExperienceChart } from "./chart";
+import { HelloView } from "./_components/hello-view";
 
 const userData = {
   id: "2023010101",
@@ -49,10 +50,7 @@ export default function Page() {
       <NavigationBar title="홈" noBackButton />
       <List>
         <Section>
-          <div className="py-6 text-center font-semibold">
-            <div className="text-muted-foreground">1월 13일 월요일</div>
-            <div className="text-lg">{userData.name}님, 오늘도 힘내봐요!</div>
-          </div>
+          <HelloView />
         </Section>
         <Section header="경험치">
           <ListItem>
