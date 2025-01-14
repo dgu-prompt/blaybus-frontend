@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { fetchJobQuests } from "../_actions/fetch-data";
+import { fetchJobQuests } from "../_actions/fetch-job-quests";
 import { toast } from "sonner";
 
 export function JobQuestsButton() {
