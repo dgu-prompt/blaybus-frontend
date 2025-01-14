@@ -7,6 +7,7 @@ import { PushNotificationOnboarding } from "./_components/push-notification-onbo
 import { Container, Wrapper } from "@/components/container";
 import { setNotificationRead } from "./_actions/set-notification-read";
 import { NotificationListItem } from "./_components/notification-list-item";
+import { NotificationReadAllButton } from "./_components/notification-read-all-button";
 
 export default async function Page() {
   const { fcmToken } = getPushNotificationSettings();
@@ -39,9 +40,10 @@ export default async function Page() {
               notification={notification}
             />
           ))}
+          <div className="mb-4" />
         </Section>
-        <Section header=" ">
-          <Button className="mx-4">모두 읽기</Button>
+        <Section>
+          <NotificationReadAllButton />
         </Section>
       </List>
       <div>
