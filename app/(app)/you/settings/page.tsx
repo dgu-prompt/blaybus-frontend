@@ -1,5 +1,12 @@
-import { List, ListItem, ListLink, Section } from "@/components/grouped-list";
+import {
+  List,
+  ListButton,
+  ListItem,
+  ListLink,
+  Section,
+} from "@/components/grouped-list";
 import { NavigationBar } from "@/components/navigation-bar";
+import { handleLogoutAction } from "./_actions/logout-action";
 
 export default function Page() {
   return (
@@ -35,7 +42,7 @@ export default function Page() {
           <ListLink title="문의하기" href="#" />
         </Section>
         <Section>
-          <ListLink title="로그아웃" href="#" />
+          <ListButton title="로그아웃" onClick={handleLogoutAction} />
         </Section>
       </List>
     </>

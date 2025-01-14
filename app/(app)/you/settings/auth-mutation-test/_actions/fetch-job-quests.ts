@@ -1,11 +1,8 @@
 "use server";
 
-import { fetchData } from "./fetch-data";
+import { fetchWithAuth } from "@/lib/fetch";
 
 export async function fetchJobQuests() {
-  return fetchData({
-    apiEndpoint: "/api/job-quests/list?frequency=WEEK",
-    apiMethod: "GET",
-    errorMessage: "Failed to fetch job quests.",
-  });
+  return fetchWithAuth("/api/job-quests/list?frequency=WEEK");
 }
+ƒ;
