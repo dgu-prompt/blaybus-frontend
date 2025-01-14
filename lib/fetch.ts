@@ -46,5 +46,5 @@ export async function mutateWithAuth(
     },
   });
 
-  return response;
+  return response.text();
 }
