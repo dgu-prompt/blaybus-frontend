@@ -1,7 +1,8 @@
 import { Briefcase } from "lucide-react";
-import { HStack, ListItem, Section } from "@/components/grouped-list";
-import { JobQuestChart } from "./job-quest-chart";
+import { HStack, List, ListItem, Section } from "@/components/grouped-list";
+import { JobQuestChart } from "./_components/job-quest-chart";
 import { fetchWithAuth } from "@/lib/fetch";
+import { NavigationBar } from "@/components/navigation-bar";
 
 // questsProgress 배열의 개별 항목에 대한 타입
 interface QuestProgress {
@@ -33,7 +34,7 @@ async function fetchJobQuests(
   return res.json() as Promise<JobQuest[]>;
 }
 
-export async function JobQuestSection() {
+export default async function JobQuestDetails() {
   // 데이터 가져오기
   const [weekData, monthData] = await Promise.all([
     fetchJobQuests("WEEK"),
@@ -42,26 +43,27 @@ export async function JobQuestSection() {
 
   // 병합 처리
   const mergedData: JobQuest[] = [...weekData, ...monthData];
+  const quest = mergedData[0];
+
+  const currentPeriod = quest.questsProgress.find(
+    (progress) => progress.isCurrentPeriod,
+  );
+
+  // 차트 데이터 생성
+  const chartData = quest.questsProgress.map((progress) => ({
+    period: progress.period,
+    expDo: progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo,
+    fill: "hsl(var(--chart-1))",
+  }));
+
+  const chartTicks = [0, quest.medianExpDo, quest.maxExpDo];
 
   return (
-    <Section>
-      {mergedData.map((quest) => {
-        // 현재 주기 데이터 찾기
-        const currentPeriod = quest.questsProgress.find(
-          (progress) => progress.isCurrentPeriod,
-        );
-
-        // 차트 데이터 생성
-        const chartData = quest.questsProgress.map((progress) => ({
-          period: progress.period,
-          expDo: progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo,
-          fill: progress.isCurrentPeriod ? "hsl(var(--chart-1))" : undefined,
-        }));
-
-        return (
+    <>
+      <NavigationBar title="직무 퀘스트" />
+      <List>
+        <Section>
           <ListItem
-            key={quest.questId}
-            href="/home/job-quest"
             title={
               <HStack className="gap-2 text-chart-1">
                 <Briefcase className="size-5" />
@@ -83,13 +85,29 @@ export async function JobQuestSection() {
                 </span>
                 <span className="text-base"> do</span>
               </span>
-              <div className="h-12 w-24">
-                <JobQuestChart data={chartData} />
-              </div>
             </HStack>
+            <JobQuestChart data={chartData} ticks={chartTicks} />
           </ListItem>
-        );
-      })}
-    </Section>
+        </Section>
+        <Section header="모든 데이터">
+          {quest.questsProgress
+            .slice()
+            .reverse()
+            .map((progress, index) => {
+              let expDo = 0;
+              if (progress.status == "MAX") expDo = quest.maxExpDo;
+              else if (progress.status == "MEDIUM") expDo = quest.medianExpDo;
+
+              return (
+                <ListItem
+                  key={index}
+                  detail={`${progress.period}주차`}
+                  title={`${expDo} do (${progress.status})`}
+                />
+              );
+            })}
+        </Section>
+      </List>
+    </>
   );
 }
