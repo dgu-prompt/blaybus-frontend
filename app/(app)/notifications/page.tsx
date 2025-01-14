@@ -6,7 +6,7 @@ import Link from "next/link";
 import { NavigationBar } from "@/components/navigation-bar";
 import { Container, Wrapper } from "@/components/container";
 import { List, ListItem, Section } from "@/components/list";
-
+import { getNotifications } from "./_actions/get-notifications";
 import { cn } from "@/lib/utils";
 
 const notifications = [
@@ -88,7 +88,41 @@ const notifications = [
 ];
 
 export default async function Page() {
-  const unreadCount = notifications.filter((n) => !n.isRead).length;
+  let notifications = [];
+
+  try {
+    notifications = await getNotifications();
+    console.log(notifications);
+  } catch (error) {
+    console.error("Failed to load notifications:", error);
+  }
+
+  // const unreadCount = notifications.filter((n) => !n.isRead).length;
+
+  return (
+    <>
+      <NavigationBar title="알림" noBackButton />
+      <List>
+        <Section header="최근 7일간 알림">
+          {notifications.map((notification: any) => (
+            <ListItem key={notification.notificationId}>
+              {notification.is_read ? "read" : "new"}
+              {notification.content} - {notification.type} -{" "}
+              {/* <UpdateNotificationButton
+                action={`mark-read/${notification.id}`}
+              /> */}
+            </ListItem>
+          ))}
+        </Section>
+        <Section>
+          <Button>모읽음</Button>
+        </Section>
+      </List>
+      <div>
+        {notifications.length === 0 ? <p>알림이 없습니다.</p> : <ul></ul>}
+      </div>
+    </>
+  );
 
   return (
     <>
