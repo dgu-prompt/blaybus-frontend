@@ -10,7 +10,6 @@ export async function handleLogoutAction() {
   try {
     await mutateWithAuth("/api/auth/logout", "POST");
     cookieStore.delete("auth_token");
-    redirect("/login");
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error("로그아웃 에러:", error);
@@ -19,5 +18,7 @@ export async function handleLogoutAction() {
       console.error("알 수 없는 에러:", error);
       throw new Error("서버 요청 중 문제가 발생했습니다.");
     }
+  } finally {
+    redirect("/login");
   }
 }

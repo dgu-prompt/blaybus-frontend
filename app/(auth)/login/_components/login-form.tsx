@@ -40,9 +40,10 @@ export function LoginForm({
     try {
       await onSubmit(values);
       toast.success("로그인 성공!");
-      redirect("/home");
     } catch (error: any) {
       toast.error(error?.message || "로그인 실패");
+    } finally {
+      redirect("/home");
     }
   };
 
