@@ -14,7 +14,7 @@ export function NotificationListItem({
     type: string;
   };
 }) {
-  const [isRead, setIsRead] = useState<Boolean>(notification.is_read);
+  const [isRead, setIsRead] = useState<boolean>(notification.is_read);
 
   return (
     <ListItem
