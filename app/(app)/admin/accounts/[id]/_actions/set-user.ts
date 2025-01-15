@@ -2,7 +2,10 @@
 
 import { fetchWithAuth } from "@/lib/fetch";
 
-export async function setUser(id, formData) {
+export async function setUser(
+  id: string,
+  formData: { department: string; level: string },
+) {
   console.log(formData);
   try {
     const response = await fetchWithAuth(`/api/admin/users/${id}`, {

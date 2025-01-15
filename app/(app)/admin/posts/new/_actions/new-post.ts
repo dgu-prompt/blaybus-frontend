@@ -2,11 +2,14 @@
 
 import { fetchWithAuth } from "@/lib/fetch";
 
-export async function setUser(id, formData) {
+export async function newPost(formData: {
+  content: string;
+  postTitle: string;
+}) {
   console.log(formData);
   try {
-    const response = await fetchWithAuth(`/api/admin/users/${id}`, {
-      method: "PUT",
+    const response = await fetchWithAuth("/api/admin/posts", {
+      method: "POST",
       body: JSON.stringify(formData),
     });
 

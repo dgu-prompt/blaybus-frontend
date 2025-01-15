@@ -2,7 +2,7 @@
 
 import { fetchWithAuth } from "@/lib/fetch";
 
-export async function getUsers() {
+export async function getPosts() {
   try {
     const response = await fetchWithAuth("/api/admin/users");
 

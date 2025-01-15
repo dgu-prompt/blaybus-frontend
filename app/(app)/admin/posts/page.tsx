@@ -1,6 +1,7 @@
 import { NavigationBar } from "@/components/navigation-bar";
 import { List, ListItem, Section } from "@/components/grouped-list";
-import { getUsers } from "./_actions/get-users";
+import { getPosts } from "./_actions/get-posts";
+import { NewButton } from "./_components/new-button";
 
 interface User {
   employeeNumber: string;
@@ -13,24 +14,25 @@ interface User {
 }
 
 export default async function Page() {
-  const users = await getUsers();
-  console.log(users);
+  // const users = await getPosts();
+  // console.log(users);
 
   return (
     <>
-      <NavigationBar title="회원 관리" />
-      <div className="w-full max-w-screen-sm">
-        <List>
-          <Section footer="관리할 회원을 선택해주세요">
-            {users.map((user: User) => (
-              <ListItem
-                key={user.employeeNumber}
-                title={user.employeeName}
-                detail={user.employeeNumber}
-                href={`/admin/accounts/${user.employeeNumber}`}
-              />
-            ))}
-            {/* {accountData.map((account) => (
+      <NavigationBar title="게시글 관리" actionButton={<NewButton />} />
+
+      <List>
+        <ListItem title="API 구현 예정" />
+        {/* <Section footer="관리할 회원을 선택해주세요">
+          {users.map((user: User) => (
+            <ListItem
+              key={user.employeeNumber}
+              title={user.employeeName}
+              detail={user.employeeNumber}
+              href={`/admin/accounts/${user.employeeNumber}`}
+            />
+          ))}
+          {/* {accountData.map((account) => (
               <Row key={account.id}>
                 <ListNav
                   href={`/settings/admin-accounts/${account.id}`}
@@ -38,9 +40,8 @@ export default async function Page() {
                 />
               </Row>
             ))} */}
-          </Section>
-        </List>
-      </div>
+        {/* </Section>  */}
+      </List>
     </>
   );
 }

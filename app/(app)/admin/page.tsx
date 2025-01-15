@@ -8,8 +8,8 @@ export default function Page() {
       <List>
         <Section header="관리자">
           <ListItem title="회원 관리" href="/admin/accounts/" />
-          <ListItem title=" 게시글 관리" href="/settings/display" />
-          <ListItem title="알림 관리" href="/settings/language" />
+          <ListItem title="알림 관리" href="/admin/notifications" />
+          <ListItem title="게시글 관리" href="/admin/posts" />
           <ListLink title="Google Sheet 지금 동기화" href="#" />
         </Section>
         <Section header="개발자">
