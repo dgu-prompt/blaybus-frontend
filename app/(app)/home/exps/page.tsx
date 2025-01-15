@@ -1,3 +1,18 @@
+import { NavigationBar } from "@/components/navigation-bar";
+import { ExperienceChart } from "./_components/chart";
+import ExperienceProgress from "./_components/chart2";
+
+export default function Page() {
+  return (
+    <>
+      <NavigationBar title="경험치" />
+
+      <ExperienceChart />
+      <ExperienceProgress />
+    </>
+  );
+}
+
 // <ExperienceChart />
 //           <Container className="grow">
 //             <Wrapper className="gap-4">
