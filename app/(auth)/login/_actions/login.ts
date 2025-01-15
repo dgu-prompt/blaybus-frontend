@@ -9,8 +9,6 @@ export async function handleLoginAction({
   username: string;
   password: string;
 }) {
-  console.log("서버에서 처리 중:", { username, password });
-
   const baseUrl = process.env.API_BASE_URL; // 환경 변수에서 BASE URL 가져오기
   const loginEndpoint = "/api/auth/login"; // 로그인 엔드포인트
   const apiUrl = `${baseUrl}${loginEndpoint}`; // 최종 API URL
