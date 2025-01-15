@@ -1,6 +1,6 @@
 "use server";
 
-import { fetchWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 
 export async function setNotificationReadAll() {
   try {

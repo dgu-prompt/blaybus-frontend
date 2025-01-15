@@ -1,4 +1,4 @@
-import { fetchWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 import { Today } from "./today";
 
 // TODO: 유저 아이디 말고 실제 이름을 불러오도록

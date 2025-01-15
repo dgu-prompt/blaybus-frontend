@@ -1,5 +1,5 @@
 import { TabBar } from "@/components/tab-bar";
-import { fetchWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 
 export default async function Layout({
   children,

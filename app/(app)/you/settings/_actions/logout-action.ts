@@ -1,14 +1,16 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { mutateWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 import { redirect } from "next/navigation";
 
 export async function handleLogoutAction() {
   const cookieStore = await cookies();
 
   try {
-    await mutateWithAuth("/api/auth/logout", "POST");
+    await fetchWithAuth("/api/auth/logout", {
+      method: "POST",
+    });
     cookieStore.delete("auth_token");
   } catch (error: unknown) {
     if (error instanceof Error) {

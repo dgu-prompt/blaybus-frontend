@@ -1,7 +1,7 @@
 import { Briefcase } from "lucide-react";
 import { HStack, List, ListItem, Section } from "@/components/grouped-list";
 import { JobQuestChart } from "./_components/job-quest-chart";
-import { fetchWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 import { NavigationBar } from "@/components/navigation-bar";
 
 // questsProgress 배열의 개별 항목에 대한 타입

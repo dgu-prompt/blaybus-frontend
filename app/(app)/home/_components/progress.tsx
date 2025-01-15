@@ -1,5 +1,5 @@
 import { Progress } from "@/components/ui/progress";
-import { fetchWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 
 export async function getExpsSummary() {
   try {

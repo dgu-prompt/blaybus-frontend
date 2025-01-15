@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { mutateWithAuth } from "@/lib/fetch";
+import { fetchWithAuth } from "@/lib/fetch-with-auth";
 import { app as firebaseApp } from "@/lib/firebase";
 import { getMessaging, getToken } from "firebase/messaging";
 import { setFCMTokenCookie } from "../_actions/set-fcm-token-cookie";
@@ -42,8 +42,16 @@ async function requestNotificationPermission() {
 
     // 3. 서버로 토큰 전달
     const requestUrl = `/api/notifications/fcm/token?fcmToken=${fcmToken}`;
-    const tokenRegisterResponse = await mutateWithAuth(requestUrl, "POST");
-    console.log(tokenRegisterResponse);
+    const response = await fetchWithAuth(requestUrl, {
+      method: "POST",
+    });
+
+    // 성공 여부 확인
+    if (!response.ok) {
+      const errorDetails = await response.text(); // 서버에서 반환된 에러 메시지
+      console.error(`Failed to store fcmToken on Server: ${errorDetails}`);
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
 
     await setFCMTokenCookie(fcmToken);
     alert("알림이 설정되었습니다!");
