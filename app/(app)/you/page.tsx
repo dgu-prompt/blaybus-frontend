@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 동적 렌더링 강제
+
 import { List, ListItem, ListLink, Section } from "@/components/grouped-list";
 import { NavigationBar } from "@/components/navigation-bar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";

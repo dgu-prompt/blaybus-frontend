@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 동적 렌더링 강제
+
 import { NavigationBar } from "@/components/navigation-bar";
 import { List, ListItem, Section } from "@/components/grouped-list";
 import { getUsers } from "./_actions/get-users";
