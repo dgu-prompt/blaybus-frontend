@@ -28,5 +28,11 @@ export function middleware(request: NextRequest) {
 
 // 미들웨어가 적용될 경로 설정
 export const config = {
-  matcher: ["/login", "/home/:path*", "/notifications/:path*", "/you/:path*"],
+  matcher: [
+    "/login",
+    "/home/:path*",
+    "/notifications/:path*",
+    "/you/:path*",
+    "/admin/:path*",
+  ],
 };
