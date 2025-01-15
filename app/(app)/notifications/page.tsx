@@ -8,6 +8,7 @@ import { NotificationListItem } from "./_components/notification-list-item";
 import { NotificationReadAllButton } from "./_components/notification-read-all-button";
 import { PostListItem } from "./_components/post-list-item";
 import { getPosts } from "./_actions/get-posts";
+import { ListItem } from "@/components/list";
 
 interface Notification {
   notificationId: string;
@@ -40,23 +41,26 @@ export default async function Page() {
         </Container>
       )}
       <List>
-        {notifications.length !== 0 && (
-          <>
-            <Section header="최근 7일간 알림">
+        <Section header="최근 7일간 알림">
+          {notifications.length === 0 ? (
+            <ListItem>최근 7일간 받은 알림이 없습니다.</ListItem>
+          ) : (
+            <>
               {notifications.map((notification: Notification) => (
                 <NotificationListItem
                   key={notification.notificationId}
                   notification={notification}
                 />
               ))}
-              <div className="mb-4" />
-            </Section>
-            <Section>
-              <NotificationReadAllButton />
-            </Section>
-          </>
+            </>
+          )}
+          <div className="mb-4" />
+        </Section>
+        {notifications.length > 0 && (
+          <Section>
+            <NotificationReadAllButton />
+          </Section>
         )}
-
         <Section header="게시판">
           {posts.map((post: Post) => (
             <PostListItem key={post.id} post={post} />
