@@ -16,6 +16,12 @@ interface Notification {
   type: string;
 }
 
+interface Post {
+  id: string;
+  postTitle: string;
+  content: string;
+}
+
 export default async function Page() {
   const { fcmToken } = await getPushNotificationSettings();
   const notifications = await getNotifications();
@@ -52,7 +58,7 @@ export default async function Page() {
         )}
 
         <Section header="게시판">
-          {posts.map((post) => (
+          {posts.map((post: Post) => (
             <PostListItem key={post.id} post={post} />
           ))}
           <div className="mb-4" />

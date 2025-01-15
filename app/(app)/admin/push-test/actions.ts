@@ -9,10 +9,13 @@ webpush.setVapidDetails(
 );
 
 // Mock 데이터베이스
-const subscriptions: Record<string, PushSubscription[]> = {};
+const subscriptions: Record<string, webpush.PushSubscription[]> = {};
 
 // 사용자 구독 추가
-export async function subscribeUser(userId: string, sub: PushSubscription) {
+export async function subscribeUser(
+  userId: string,
+  sub: webpush.PushSubscription,
+) {
   if (!subscriptions[userId]) {
     subscriptions[userId] = [];
   }

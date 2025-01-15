@@ -97,7 +97,9 @@ export function ExperienceProgress() {
                 offset={12}
                 className="fill-foreground"
                 fontSize={12}
-                formatter={(value) => value.toLocaleString()}
+                formatter={(value: { toLocaleString: () => string }) =>
+                  value.toLocaleString()
+                }
               />
             </Line>
           </LineChart>

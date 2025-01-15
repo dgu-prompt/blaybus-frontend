@@ -2,7 +2,10 @@
 
 import { fetchWithAuth } from "@/lib/fetch";
 
-export async function newPost(formData) {
+export async function newPost(formData: {
+  postTitle: string;
+  content: string;
+}) {
   try {
     const response = await fetchWithAuth("/api/admin/posts", {
       method: "POST",

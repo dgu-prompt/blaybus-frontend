@@ -3,11 +3,12 @@ import NotificationDrawer from "./notification-drawer";
 export default async function NotificationPage({
   params,
 }: {
-  params: { notificationID: string };
+  params: Promise<{ notificationID: string }>;
 }) {
+  const { notificationID } = await params;
   // 서버에서 알림 데이터 가져오기
   const res = await fetch(
-    `https://api.example.com/notifications/${params.notificationID}`,
+    `https://api.example.com/notifications/${notificationID}`,
     { cache: "no-store" },
   );
 
@@ -20,7 +21,7 @@ export default async function NotificationPage({
   return (
     <NotificationDrawer
       notification={notification}
-      notificationID={params.notificationID}
+      notificationID={notificationID}
     />
   );
 }

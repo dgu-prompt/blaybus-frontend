@@ -17,6 +17,7 @@ import { redirect } from "next/navigation";
 import { VStack } from "@/components/grouped-list";
 import Image from "next/image";
 import appIcon from "@/app/apple-icon.png";
+import { handleLoginAction } from "../_actions/login";
 
 const loginSchema = z.object({
   username: z.string().min(2, "아이디는 최소 2자 이상이어야 합니다."),
@@ -25,11 +26,7 @@ const loginSchema = z.object({
 
 type LoginSchema = z.infer<typeof loginSchema>;
 
-export function LoginForm({
-  onSubmit,
-}: {
-  onSubmit: (data: LoginSchema) => Promise<void>;
-}) {
+export function LoginForm() {
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -40,7 +37,7 @@ export function LoginForm({
 
   const handleFormSubmit = async (values: LoginSchema) => {
     try {
-      await onSubmit(values);
+      await handleLoginAction(values);
       toast.success("로그인 성공!");
     } catch (error: unknown) {
       if (error instanceof Error) {

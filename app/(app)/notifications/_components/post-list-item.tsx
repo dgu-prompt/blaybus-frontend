@@ -6,7 +6,7 @@ export function PostListItem({
 }: {
   post: {
     id: string;
-    postTitle: boolean;
+    postTitle: string;
     content: string;
   };
 }) {
