@@ -2,14 +2,12 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "DoDoesDid",
-    short_name: "DoDoesDid",
+    name: "두더디",
+    short_name: "두더디",
     description:
       "Gamified app for tracking and visualizing performance growth and achievements at DoHands.",
     start_url: "/home",
     display: "standalone",
-    background_color: "translucent",
-    theme_color: "translucent",
     // icons: [
     //   {
     //     src: "/icon-192x192.png",
