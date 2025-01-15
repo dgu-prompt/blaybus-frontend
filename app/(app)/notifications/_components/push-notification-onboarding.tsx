@@ -40,8 +40,6 @@ async function requestNotificationPermission() {
       return;
     }
 
-    console.log(fcmToken);
-
     // 3. 서버로 토큰 전달
     const requestUrl = `/api/notifications/fcm/token?fcmToken=${fcmToken}`;
     const tokenRegisterResponse = await mutateWithAuth(requestUrl, "POST");

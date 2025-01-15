@@ -6,7 +6,6 @@ export async function newPost(formData: {
   content: string;
   postTitle: string;
 }) {
-  console.log(formData);
   try {
     const response = await fetchWithAuth("/api/admin/posts", {
       method: "POST",

@@ -6,7 +6,6 @@ export async function setUser(
   id: string,
   formData: { department: string; level: string },
 ) {
-  console.log(formData);
   try {
     const response = await fetchWithAuth(`/api/admin/users/${id}`, {
       method: "PUT",

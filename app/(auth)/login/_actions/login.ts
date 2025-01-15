@@ -36,9 +36,7 @@ export async function handleLoginAction({
     }
 
     const data = await response.json();
-    console.log(data);
     const { token } = data;
-    // const { token, expires_in } = data;
 
     // 쿠키 저장
     const cookieStore = await cookies();

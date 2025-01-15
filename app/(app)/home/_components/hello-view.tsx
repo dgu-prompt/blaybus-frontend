@@ -18,7 +18,6 @@ export async function getUsername() {
 
 export async function HelloView() {
   const user = await getUsername();
-  console.log(user);
 
   return (
     <div className="py-6 text-center font-semibold">
