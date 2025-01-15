@@ -20,28 +20,18 @@ export default async function Page() {
   return (
     <>
       <NavigationBar title="회원 관리" />
-      <div className="w-full max-w-screen-sm">
-        <List>
-          <Section footer="관리할 회원을 선택해주세요">
-            {users.map((user: User) => (
-              <ListItem
-                key={user.employeeNumber}
-                title={user.employeeName}
-                detail={user.employeeNumber}
-                href={`/admin/accounts/${user.employeeNumber}`}
-              />
-            ))}
-            {/* {accountData.map((account) => (
-              <Row key={account.id}>
-                <ListNav
-                  href={`/settings/admin-accounts/${account.id}`}
-                  label={account.name}
-                />
-              </Row>
-            ))} */}
-          </Section>
-        </List>
-      </div>
+      <List>
+        <Section>
+          {users.map((user: User) => (
+            <ListItem
+              key={user.employeeNumber}
+              title={user.employeeName}
+              detail={user.employeeNumber}
+              href={`/admin/accounts/${user.employeeNumber}`}
+            />
+          ))}
+        </Section>
+      </List>
     </>
   );
 }
