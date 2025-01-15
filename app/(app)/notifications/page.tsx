@@ -7,6 +7,13 @@ import { Container, Wrapper } from "@/components/container";
 import { NotificationListItem } from "./_components/notification-list-item";
 import { NotificationReadAllButton } from "./_components/notification-read-all-button";
 
+interface Notification {
+  notificationId: string;
+  is_read: boolean;
+  content: string;
+  type: string;
+}
+
 export default async function Page() {
   const { fcmToken } = getPushNotificationSettings();
   const notifications = await getNotifications();
@@ -25,7 +32,7 @@ export default async function Page() {
       </Container>
       <List>
         <Section header="최근 7일간 알림">
-          {notifications.map((notification: any) => (
+          {notifications.map((notification: Notification) => (
             <NotificationListItem
               key={notification.notificationId}
               notification={notification}
