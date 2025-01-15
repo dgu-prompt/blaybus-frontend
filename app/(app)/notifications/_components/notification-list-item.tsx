@@ -6,7 +6,7 @@ import { setNotificationRead } from "../_actions/set-notification-read";
 
 function NotificationIndicator({ isRead }: { isRead: boolean }) {
   return isRead ? (
-    <div className="size-4 rounded-full"></div>
+    <div className="size-2 rounded-full"></div>
   ) : (
     <div className="size-2 rounded-full bg-blue-400"></div>
   );

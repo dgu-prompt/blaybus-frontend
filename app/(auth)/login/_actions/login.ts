@@ -50,8 +50,11 @@ export async function handleLoginAction({
     });
 
     return { token };
-  } catch (error: any) {
-    console.error("로그인 에러:", error);
-    throw new Error(error.message || "서버 요청 중 문제가 발생했습니다.");
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(`Error login: ${error.message}`);
+    } else {
+      console.error("Unexpected error:", error);
+    }
   }
 }

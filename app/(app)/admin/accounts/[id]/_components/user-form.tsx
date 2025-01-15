@@ -39,8 +39,14 @@ export function UserForm({ user }: { user: User }) {
     try {
       await setUser(user.employeeNumber, values);
       toast.success("유저 업데이트 성공!");
-    } catch (error: any) {
-      toast.error(error?.message || "유저 업데이트 실패");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(`Error updating user: ${error.message}`);
+        toast.error(`Error updating user: ${error.message}`);
+      } else {
+        console.error("Unexpected error:", error);
+        toast.error("Unexpected error");
+      }
     }
   };
 

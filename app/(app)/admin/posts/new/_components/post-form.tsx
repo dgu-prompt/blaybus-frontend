@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { setUser } from "../[id]/_actions/set-user";
 import { newPost } from "../_actions/new-post";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -30,9 +29,15 @@ export function PostForm() {
   const handleFormSubmit = async (values: FormSchema) => {
     try {
       await newPost(values);
-      toast.success("유저 업데이트 성공!");
-    } catch (error: any) {
-      toast.error(error?.message || "유저 업데이트 실패");
+      toast.success("게시글 등록 성공!");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(`Error posting: ${error.message}`);
+        toast.error(`Error posting: ${error.message}`);
+      } else {
+        console.error("Unexpected error:", error);
+        toast.error("Unexpected error");
+      }
     }
   };
 

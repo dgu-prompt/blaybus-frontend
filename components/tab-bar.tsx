@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 const tabs = [
   { title: "홈", href: "/home", icon: Home },
-  { title: "알림", href: "/notifications", icon: Bell },
+  { title: "알림", href: "/notifications", icon: Bell, active: true },
   { title: "나", href: "/you", icon: User },
-  { title: "관리자", href: "/admin", icon: Wrench, active: true },
+  { title: "관리자", href: "/admin", icon: Wrench },
 ];
 
 function Tab({

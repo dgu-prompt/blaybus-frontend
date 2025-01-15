@@ -10,12 +10,10 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
-import { GalleryVerticalEnd } from "lucide-react";
 import { VStack } from "@/components/grouped-list";
 import Image from "next/image";
 import appIcon from "@/app/apple-icon.png";
@@ -44,8 +42,13 @@ export function LoginForm({
     try {
       await onSubmit(values);
       toast.success("로그인 성공!");
-    } catch (error: any) {
-      toast.error(error?.message || "로그인 실패");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(`Error login: ${error.message}`);
+        toast.error(`Error login: ${error.message}`);
+      } else {
+        console.error("Unexpected error:", error);
+      }
     } finally {
       redirect("/home");
     }

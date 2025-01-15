@@ -126,7 +126,7 @@ export function ListItem({
   containerClassName?: string;
   wrapperClassName?: string;
   href?: string;
-  action?: () => {};
+  action?: () => void;
 }) {
   if (href) {
     return (
@@ -231,7 +231,7 @@ export function Upper({
 }: {
   title: string;
   subtitle?: string;
-  icon?: React.ComponentType<any>;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   className?: string;
 }) {
   return (
