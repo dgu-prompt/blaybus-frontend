@@ -16,6 +16,7 @@ export async function getExpsSummary() {
 
 export async function ExpProgress() {
   const data = await getExpsSummary();
+  console.log(data);
   const { totalExp, requiredExp, recentLv, nextLv } = data;
   const progress = (totalExp / requiredExp) * 100;
 

@@ -6,6 +6,8 @@ import { PushNotificationOnboarding } from "./_components/push-notification-onbo
 import { Container, Wrapper } from "@/components/container";
 import { NotificationListItem } from "./_components/notification-list-item";
 import { NotificationReadAllButton } from "./_components/notification-read-all-button";
+import { PostListItem } from "./_components/post-list-item";
+import { getPosts } from "./_actions/get-posts";
 
 interface Notification {
   notificationId: string;
@@ -15,38 +17,47 @@ interface Notification {
 }
 
 export default async function Page() {
-  const { fcmToken } = getPushNotificationSettings();
+  const { fcmToken } = await getPushNotificationSettings();
   const notifications = await getNotifications();
+  const posts = await getPosts();
 
   // const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   return (
     <>
       <NavigationBar title="알림" noBackButton />
-      <Container>
-        <Wrapper className="px-safe-or-4">
-          {fcmToken}
-
-          <PushNotificationOnboarding fcmToken={fcmToken} />
-        </Wrapper>
-      </Container>
+      {!fcmToken && (
+        <Container>
+          <Wrapper className="px-safe-or-4">
+            <PushNotificationOnboarding />
+          </Wrapper>
+        </Container>
+      )}
       <List>
-        <Section header="최근 7일간 알림">
-          {notifications.map((notification: Notification) => (
-            <NotificationListItem
-              key={notification.notificationId}
-              notification={notification}
-            />
+        {notifications.length !== 0 && (
+          <>
+            <Section header="최근 7일간 알림">
+              {notifications.map((notification: Notification) => (
+                <NotificationListItem
+                  key={notification.notificationId}
+                  notification={notification}
+                />
+              ))}
+              <div className="mb-4" />
+            </Section>
+            <Section>
+              <NotificationReadAllButton />
+            </Section>
+          </>
+        )}
+
+        <Section header="게시판">
+          {posts.map((post) => (
+            <PostListItem key={post.id} post={post} />
           ))}
           <div className="mb-4" />
         </Section>
-        <Section>
-          <NotificationReadAllButton />
-        </Section>
       </List>
-      <div>
-        {notifications.length === 0 ? <p>알림이 없습니다.</p> : <ul></ul>}
-      </div>
     </>
   );
 }

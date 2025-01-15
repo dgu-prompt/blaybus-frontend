@@ -53,7 +53,10 @@ export default async function JobQuestDetails() {
   const chartData = quest.questsProgress.map((progress) => ({
     period: progress.period,
     expDo: progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo,
-    fill: "hsl(var(--chart-1))",
+    fill:
+      progress.status === "MAX"
+        ? "hsla(var(--chart-1) / 0.5)"
+        : "hsl(var(--chart-1))",
   }));
 
   const chartTicks = [0, quest.medianExpDo, quest.maxExpDo];

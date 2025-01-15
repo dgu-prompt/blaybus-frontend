@@ -4,6 +4,14 @@ import { useState } from "react";
 import { ListItem } from "@/components/list";
 import { setNotificationRead } from "../_actions/set-notification-read";
 
+function NotificationIndicator({ isRead }: { isRead: boolean }) {
+  return isRead ? (
+    <div className="size-4 rounded-full"></div>
+  ) : (
+    <div className="size-2 rounded-full bg-blue-400"></div>
+  );
+}
+
 export function NotificationListItem({
   notification,
 }: {
@@ -22,14 +30,14 @@ export function NotificationListItem({
       containerClassName="active:bg-accent"
     >
       <button
-        className="text-left"
+        className="flex items-center gap-2 text-left"
         onClick={async () => {
           await setNotificationRead(notification.notificationId);
           setIsRead(true);
         }}
       >
-        {isRead ? "read" : "new"}
-        {notification.content} - {notification.type} -{" "}
+        <NotificationIndicator isRead={isRead} />
+        {notification.content}
         {/* <UpdateNotificationButton
                 action={`mark-read/${notification.id}`}
               /> */}

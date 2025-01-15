@@ -42,6 +42,7 @@ export async function JobQuestSection() {
 
   // 병합 처리
   const mergedData: JobQuest[] = [...weekData, ...monthData];
+  console.log("fetched", monthData);
 
   return (
     <Section>

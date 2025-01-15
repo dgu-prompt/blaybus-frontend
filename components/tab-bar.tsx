@@ -4,10 +4,10 @@ import { Container, Wrapper } from "./container";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { title: "홈", href: "/home", icon: Home, active: true },
+  { title: "홈", href: "/home", icon: Home },
   { title: "알림", href: "/notifications", icon: Bell },
   { title: "나", href: "/you", icon: User },
-  { title: "관리자", href: "/admin", icon: Wrench },
+  { title: "관리자", href: "/admin", icon: Wrench, active: true },
 ];
 
 function Tab({
