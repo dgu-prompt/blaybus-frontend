@@ -74,7 +74,12 @@ export default async function JobQuestDetails() {
 
   const totalExpDo = quest.questsProgress.reduce((total, progress) => {
     return (
-      total + (progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo)
+      total +
+      (progress.status === "MAX"
+        ? quest.maxExpDo
+        : progress.status === "MEDIUM"
+          ? quest.medianExpDo
+          : 0)
     );
   }, 0);
   const formattedTotalExpDo = new Intl.NumberFormat("ko-KR").format(totalExpDo);
