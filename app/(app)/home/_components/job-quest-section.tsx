@@ -76,9 +76,14 @@ export async function JobQuestSection() {
         const detailString = `${currentPeriod?.period || "-"}${periodString}`;
 
         // 차트 데이터 생성
-        const chartData = quest.questsProgress.map((progress) => ({
+        const chartData = quest.questsProgress.slice(-6).map((progress) => ({
           period: progress.period,
-          expDo: progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo,
+          expDo:
+            progress.status === "MAX"
+              ? quest.maxExpDo
+              : progress.status === "MEDIUM"
+                ? quest.medianExpDo
+                : 3,
           fill: progress.isCurrentPeriod ? "hsl(var(--chart-1))" : undefined,
         }));
 

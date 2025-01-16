@@ -245,7 +245,7 @@ export function ListButton({
   return (
     <ListItemContainer>
       <button
-        className="w-full text-blue-600 dark:text-blue-400"
+        className="w-full text-blue-500 dark:text-blue-400"
         onClick={onClick}
       >
         {detail ? (

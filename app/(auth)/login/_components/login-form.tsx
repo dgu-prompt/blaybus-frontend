@@ -77,7 +77,11 @@ export function LoginForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="아이디" {...field} />
+                    <Input
+                      placeholder="아이디"
+                      autoCapitalize="off"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

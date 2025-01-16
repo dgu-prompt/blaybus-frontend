@@ -20,7 +20,7 @@ interface Notification {
 }
 
 interface Post {
-  id: string;
+  postId: string;
   title: string;
   content: string;
   createdAt?: string;
@@ -67,9 +67,9 @@ export default async function Page() {
         )}
         <Section header="게시판">
           {posts.posts.map((post: Post) => (
-            <PostListItem key={post.id} post={post} />
+            <PostListItem key={post.postId} post={post} />
           ))}
-          <div className="mb-4" />
+          <div key="0" className="mb-4" />
         </Section>
       </List>
     </>

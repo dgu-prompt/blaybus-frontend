@@ -46,7 +46,10 @@ export function ExperienceChart({
   }, [data]);
 
   return (
-    <ChartContainer config={chartConfig}>
+    <ChartContainer
+      config={chartConfig}
+      className="aspect-square max-h-[320px] min-h-[250px] w-full"
+    >
       <PieChart>
         <ChartTooltip
           cursor={false}
@@ -56,7 +59,7 @@ export function ExperienceChart({
           data={data}
           dataKey="points"
           nameKey="category"
-          innerRadius={60}
+          innerRadius={80}
           strokeWidth={5}
         >
           <Label
@@ -72,7 +75,7 @@ export function ExperienceChart({
                     <tspan
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-foreground text-3xl font-bold"
+                      className="fill-foreground text-2xl font-bold"
                     >
                       {totalPoints.toLocaleString()}
                     </tspan>

@@ -28,14 +28,20 @@ export function NavigationBar({
   return (
     <Container className="pt-safe translucent sticky top-0 z-50 border-b bg-background/50">
       <Wrapper className="h-11">
-        <div className="px-safe-or-4 grid h-full grid-cols-3 items-center">
-          <div className="flex justify-start">
+        <div className="px-safe-or-4 flex h-full items-center gap-4">
+          <div className="flex w-5 justify-start">
             {!noBackButton && <BackButton />}
           </div>
-          <div className="text-center font-semibold">{title}</div>
-          <div className="flex justify-end">{actionButton}</div>
+          <div className="grow overflow-hidden text-ellipsis whitespace-pre text-center font-semibold">
+            {title}
+          </div>
+          <div className="flex w-5 justify-end">{actionButton}</div>
         </div>
       </Wrapper>
     </Container>
   );
 }
+
+// overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: pre;  --> 한 줄로 표현하고 싶다면 nowrap을 사용하면 된다.

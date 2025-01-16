@@ -59,16 +59,30 @@ export default async function Page({
   // 차트 데이터 생성
   const chartData = quest.questsProgress.map((progress) => ({
     period: progress.period,
-    expDo: progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo,
+    expDo:
+      progress.status === "MAX"
+        ? quest.maxExpDo
+        : progress.status === "MEDIUM"
+          ? quest.medianExpDo
+          : 1,
     fill:
       progress.status === "MAX"
         ? "hsla(var(--chart-2) / 0.5)"
-        : "hsl(var(--chart-2))",
+        : progress.status === "MEDIUM"
+          ? "hsl(var(--chart-2))"
+          : "hsl(var(--chart-2))",
   }));
 
   const chartTicks = [0, quest.medianExpDo, quest.maxExpDo];
   const periodString = quest.frequencyType == "WEEK" ? "주차" : "월";
   const detailString = `${currentPeriod?.period || "-"}${periodString}`;
+
+  const totalExpDo = quest.questsProgress.reduce((total, progress) => {
+    return (
+      total + (progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo)
+    );
+  }, 0);
+  const formattedTotalExpDo = new Intl.NumberFormat("ko-KR").format(totalExpDo);
 
   return (
     <>
@@ -100,6 +114,7 @@ export default async function Page({
             </HStack>
             <LeaderQuestChart data={chartData} ticks={chartTicks} />
           </ListItem>
+          <ListItem title={`총 ${formattedTotalExpDo} Do`}></ListItem>
         </Section>
         <Section header="모든 데이터">
           {quest.questsProgress
