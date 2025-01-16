@@ -1,5 +1,5 @@
-import { Progress } from "@/components/ui/progress";
 import { getExpsSummary } from "../_actions/get-exps-summary";
+import { DelayedProgress } from "./delayed-progress";
 
 export async function ExpProgress() {
   const data = await getExpsSummary();
@@ -14,7 +14,7 @@ export async function ExpProgress() {
         <div>{recentLv}</div>
         <div>{nextLv}</div>
       </div>
-      <Progress value={progress} className="h-4" />
+      <DelayedProgress progress={progress} />
       <div className="flex justify-end text-xs text-muted-foreground">
         {totalExp?.toLocaleString?.() || "0"} (
         {isNaN(progress) ? "0" : progress.toFixed(2)}%)
