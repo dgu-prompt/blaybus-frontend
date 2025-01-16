@@ -82,6 +82,12 @@ export async function JobQuestSection() {
           fill: progress.isCurrentPeriod ? "hsl(var(--chart-1))" : undefined,
         }));
 
+        const expDo = currentPeriod
+          ? currentPeriod.status === "MAX"
+            ? quest.maxExpDo
+            : quest.medianExpDo
+          : 0;
+
         return (
           <ListItem
             key={quest.questId}
@@ -94,16 +100,12 @@ export async function JobQuestSection() {
                 </span>
               </HStack>
             }
-            detail={detailString}
+            detail={<span className="text-sm">{detailString}</span>}
           >
             <HStack className="items-end">
               <span className="mr-auto">
                 <span className="text-2xl font-semibold">
-                  {currentPeriod
-                    ? currentPeriod.status === "MAX"
-                      ? quest.maxExpDo
-                      : quest.medianExpDo
-                    : "0"}
+                  {new Intl.NumberFormat("ko-KR").format(expDo)}
                 </span>
                 <span className="text-base"> do</span>
               </span>

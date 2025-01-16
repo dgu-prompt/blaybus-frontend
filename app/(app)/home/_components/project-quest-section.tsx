@@ -79,7 +79,7 @@ export async function ProjectQuestSection() {
             <HStack className="items-end">
               <span className="mr-auto">
                 <span className="text-2xl font-semibold">
-                  {project.projectExpDo}
+                  {new Intl.NumberFormat("ko-KR").format(project.projectExpDo)}
                 </span>
                 <span className="text-base"> do</span>
               </span>
