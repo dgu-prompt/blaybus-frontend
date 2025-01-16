@@ -38,7 +38,11 @@ export default async function ExperienceByTypeSection() {
 
   return (
     <Section>
-      <ExperienceChart data={chartData} />
+      <ListItem
+        title={<span className="font-medium">{thisYear}년 경험치 현황</span>}
+      >
+        <ExperienceChart data={chartData} />
+      </ListItem>
       {thisYearHistories.map((history: ExpsHistory) => {
         return (
           <ListItem
@@ -46,8 +50,11 @@ export default async function ExperienceByTypeSection() {
             title={
               <HStack className="gap-2">
                 <div
-                  className={`h-4 w-2 rounded-full bg-chart-${Object.keys(expTypeLabel).indexOf(history.expType) + 1}`}
-                ></div>
+                  className="h-4 w-2 rounded-full"
+                  style={{
+                    backgroundColor: `hsl(var(--chart-${Object.keys(expTypeLabel).indexOf(history.expType) + 1}))`,
+                  }}
+                />
 
                 <span>{expTypeLabel[history.expType]}</span>
               </HStack>
