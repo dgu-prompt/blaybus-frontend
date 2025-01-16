@@ -52,11 +52,18 @@ export default async function JobQuestDetails() {
   // 차트 데이터 생성
   const chartData = quest.questsProgress.map((progress) => ({
     period: progress.period,
-    expDo: progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo,
+    expDo:
+      progress.status === "MAX"
+        ? quest.maxExpDo
+        : progress.status === "MEDIUM"
+          ? quest.medianExpDo
+          : 1,
     fill:
       progress.status === "MAX"
         ? "hsla(var(--chart-1) / 0.5)"
-        : "hsl(var(--chart-1))",
+        : progress.status === "MEDIUM"
+          ? "hsl(var(--chart-1))"
+          : "hsl(var(--chart-1))",
   }));
 
   const chartTicks = [0, quest.medianExpDo, quest.maxExpDo];
