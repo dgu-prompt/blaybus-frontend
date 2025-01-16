@@ -15,6 +15,7 @@ interface QuestProgress {
 // API에서 반환된 각 퀘스트의 타입
 interface JobQuest {
   questId: number;
+  questTitle: string;
   maxExpDo: number; // 최대 경험치
   medianExpDo: number; // 중간 경험치
   frequencyType: "WEEK" | "MONTH"; // 주기 타입
@@ -71,7 +72,7 @@ export default async function Page({
 
   return (
     <>
-      <NavigationBar title={`${id} 리더부여 퀘스트`} />
+      <NavigationBar title={`${quest.questTitle} 리더부여 퀘스트`} />
       <List>
         <Section>
           <ListItem
@@ -79,7 +80,7 @@ export default async function Page({
               <HStack className="gap-2 text-chart-2">
                 <Briefcase className="size-5" />
                 <span className="font-medium">
-                  {quest.questId} 리더부여 퀘스트
+                  {quest.questTitle} 리더부여 퀘스트
                 </span>
               </HStack>
             }

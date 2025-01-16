@@ -14,6 +14,7 @@ interface QuestProgress {
 // API에서 반환된 각 퀘스트의 타입
 interface LeaderQuest {
   questId: number;
+  questTitle: string;
   maxExpDo: number; // 최대 경험치
   medianExpDo: number; // 중간 경험치
   frequencyType: "WEEK" | "MONTH"; // 주기 타입
@@ -90,7 +91,7 @@ export async function LeaderQuestSection() {
               <HStack className="gap-2 text-chart-2">
                 <HandHeart className="size-5" />
                 <span className="font-medium">
-                  {quest.questId} 리더부여 퀘스트
+                  {quest.questTitle} 리더부여 퀘스트
                 </span>
               </HStack>
             }
