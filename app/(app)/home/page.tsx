@@ -8,6 +8,7 @@ import { HRQuestSection } from "./_components/hr-quest-section";
 import { JobQuestSection } from "./_components/job-quest-section";
 import { ProjectQuestSection } from "./_components/project-quest-section";
 import { HelloView } from "./_components/hello-view";
+import { ExperienceProgress } from "./_components/experience-progress";
 
 export default function Page() {
   return (
@@ -18,10 +19,17 @@ export default function Page() {
           <HelloView />
         </Section>
         <Section>
-          <ListItem>
+          <ListItem
+            title={<span className="font-medium">작년 대비 나의 성장</span>}
+          >
+            <ExperienceProgress />
+          </ListItem>
+          <ListItem
+            title={<span className="font-medium">현재 레벨 진척도</span>}
+          >
             <ExpProgress />
           </ListItem>
-          <ListItem title="더 보기" href="/home/exps" />
+          <ListItem title="경험치 자세히 보기" href="/home/exps" />
         </Section>
         <JobQuestSection />
         <LeaderQuestSection />

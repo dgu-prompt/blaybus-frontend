@@ -22,7 +22,7 @@ export async function ExpProgress() {
   const formattedLeftExp = new Intl.NumberFormat("ko-KR").format(leftExp);
 
   return (
-    <div className="flex w-full flex-col gap-2">
+    <div className="mt-2 flex w-full flex-col gap-2">
       <div className="flex justify-between text-xs font-semibold">
         <div>{recentLv}</div>
         <div>{nextLv}</div>
