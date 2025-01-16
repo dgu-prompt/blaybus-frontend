@@ -1,5 +1,6 @@
-import { List, ListItem, ListLink, Section } from "@/components/grouped-list";
+import { List, ListItem, Section } from "@/components/grouped-list";
 import { NavigationBar } from "@/components/navigation-bar";
+import { SyncGoogleSheetsButton } from "./_components/sync-google-sheets-button";
 
 export default function Page() {
   return (
@@ -10,7 +11,7 @@ export default function Page() {
           <ListItem title="구성원 관리" href="/admin/accounts/" />
           <ListItem title="알림 관리" href="/admin/notifications" />
           <ListItem title="게시글 관리" href="/admin/posts" />
-          <ListLink title="Google Sheet 지금 동기화" href="#" />
+          <SyncGoogleSheetsButton />
         </Section>
         <Section header="개발자">
           <ListItem title="푸시 알림 테스트" href="/admin/push-test" />

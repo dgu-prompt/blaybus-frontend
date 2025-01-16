@@ -17,7 +17,7 @@ export function HRQuestSection() {
     { bangi: "상반기", d: 1500, c: 1500, b: 1500, a: 1500, s: 1500 },
   ];
 
-  // map -> leader-quest-chart component render
+  const expDo = 1500; // magic number
 
   return (
     <Section>
@@ -33,7 +33,9 @@ export function HRQuestSection() {
       >
         <HStack className="items-end">
           <span className="mr-auto">
-            <span className="text-2xl font-semibold">1500</span>
+            <span className="text-2xl font-semibold">
+              {new Intl.NumberFormat("ko-KR").format(expDo)}
+            </span>
             <span className="text-base"> do</span>
           </span>
           <div className="h-12 w-24">

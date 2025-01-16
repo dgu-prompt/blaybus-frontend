@@ -83,6 +83,12 @@ export async function LeaderQuestSection() {
           fill: progress.isCurrentPeriod ? "hsl(var(--chart-2))" : undefined,
         }));
 
+        const expDo = currentPeriod
+          ? currentPeriod.status === "MAX"
+            ? quest.maxExpDo
+            : quest.medianExpDo
+          : 0;
+
         return (
           <ListItem
             key={quest.questId}
@@ -95,16 +101,12 @@ export async function LeaderQuestSection() {
                 </span>
               </HStack>
             }
-            detail={detailString}
+            detail={<span className="text-sm">{detailString}</span>}
           >
             <HStack className="items-end">
               <span className="mr-auto">
                 <span className="text-2xl font-semibold">
-                  {currentPeriod
-                    ? currentPeriod.status === "MAX"
-                      ? quest.maxExpDo
-                      : quest.medianExpDo
-                    : "0"}
+                  {new Intl.NumberFormat("ko-KR").format(expDo)}
                 </span>
                 <span className="text-base"> do</span>
               </span>
@@ -112,17 +114,6 @@ export async function LeaderQuestSection() {
                 <LeaderQuestChart data={chartData} />
               </div>
             </HStack>
-            {/* <HStack className="items-end">
-              <span className="mr-auto">
-                <span className="text-2xl font-semibold">
-                  {quest.data[quest.data.length - 1].expDo}
-                </span>
-                <span className="text-base"> do</span>
-              </span>
-              <div className="h-12 w-24">
-                <LeaderQuestChart data={quest.data} />
-              </div>
-            </HStack> */}
           </ListItem>
         );
       })}
