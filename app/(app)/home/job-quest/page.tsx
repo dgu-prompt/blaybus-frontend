@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 동적 렌더링 강제
+
 import { Briefcase } from "lucide-react";
 import { HStack, List, ListItem, Section } from "@/components/grouped-list";
 import { JobQuestChart } from "./_components/job-quest-chart";
