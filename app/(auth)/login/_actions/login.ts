@@ -2,6 +2,8 @@
 
 import { cookies } from "next/headers";
 
+const JWT_EXPIRATION_MILLISECONDS = 36000000;
+
 export async function handleLoginAction({
   username,
   password,
@@ -42,7 +44,7 @@ export async function handleLoginAction({
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       path: "/",
-      maxAge: 60 * 60 * 24 * 7, // API에서 제공한 만료 시간 (초 단위)
+      maxAge: JWT_EXPIRATION_MILLISECONDS, // API에서 제공한 만료 시간 (초 단위)
     });
 
     return { token };
