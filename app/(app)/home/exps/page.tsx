@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; // 동적 렌더링 강제
+
 import { NavigationBar } from "@/components/navigation-bar";
 import { ExperienceProgress } from "./_components/experience-progress";
 import { List, Section } from "@/components/grouped-list";
