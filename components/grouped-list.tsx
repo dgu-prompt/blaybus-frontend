@@ -165,7 +165,7 @@ function ListItemContainer({
   return (
     <li
       className={cn(
-        "flex min-h-11 w-full pl-4 transition-colors active:bg-accent",
+        `flex min-h-11 w-full pl-4 transition-colors ${href && "active:bg-accent"}`,
       )}
     >
       {href ? (
