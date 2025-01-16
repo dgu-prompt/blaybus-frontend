@@ -14,7 +14,10 @@ export default function Page() {
       <NavigationBar title="설정" />
       <List>
         <Section header="계정 설정">
-          <ListItem title="비밀번호 변경" href="#" />
+          <ListItem
+            title="비밀번호 변경"
+            href="/you/settings/change-password"
+          />
         </Section>
         <Section header="앱 설정">
           <ListItem title="알림" href="/you/settings/notifications" />

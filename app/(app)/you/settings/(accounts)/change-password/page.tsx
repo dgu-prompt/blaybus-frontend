@@ -1,16 +1,14 @@
-import { List, Section } from "@/components/grouped-list";
 import { NavigationBar } from "@/components/navigation-bar";
 import { ChangePasswordForm } from "./_components/change-password-form";
+import { getUserInfo } from "./_actions/get-user-info";
 
-export default function Page() {
+export default async function Page() {
+  const user = await getUserInfo();
+
   return (
     <>
       <NavigationBar title="비밀번호 변경" />
-      <List>
-        <Section>
-          <ChangePasswordForm />
-        </Section>
-      </List>
+      <ChangePasswordForm user={user} />
     </>
   );
 }
