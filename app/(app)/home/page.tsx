@@ -17,20 +17,11 @@ export default function Page() {
         <Section>
           <HelloView />
         </Section>
-        <Section header="경험치">
+        <Section>
           <ListItem>
             <ExpProgress />
           </ListItem>
           <ListItem title="더 보기" href="/home/exps" />
-        </Section>
-        <Section header="퀘스트">
-          <ListItem
-            title={
-              <span className="text-sm text-muted-foreground">
-                1개의 직무 퀘스트와 2개의 리더부여 퀘스트가 진행중입니다.
-              </span>
-            }
-          ></ListItem>
         </Section>
         <JobQuestSection />
         <LeaderQuestSection />
