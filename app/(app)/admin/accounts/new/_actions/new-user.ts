@@ -9,7 +9,7 @@ export async function newUser(formData: {
   department: string;
   joinDate: string;
   level: string;
-  jobGroupId: number;
+  password: string;
 }) {
   try {
     const response = await fetchWithAuth("/api/admin/users", {

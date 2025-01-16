@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { setUser } from "../_actions/set-user";
+import { redirect } from "next/navigation";
 
 interface User {
   employeeNumber: string;
@@ -47,6 +48,8 @@ export function UserForm({ user }: { user: User }) {
         console.error("Unexpected error:", error);
         toast.error("Unexpected error");
       }
+    } finally {
+      redirect("/admin/accounts");
     }
   };
 

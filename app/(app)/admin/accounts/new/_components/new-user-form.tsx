@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { newUser } from "../_actions/new-user";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   employeeNumber: z.string(),
@@ -16,7 +17,7 @@ const formSchema = z.object({
   department: z.string(), // 음성 1센터	음성 2센터	용인백암센터	남양주센터	파주센터	사업기획팀	그로스팀	CX팀
   joinDate: z.string(),
   level: z.string(),
-  jobGroupId: z.number(),
+  password: z.string(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -31,7 +32,7 @@ export function NewUserForm() {
       department: "", // 음성 1센터	음성 2센터	용인백암센터	남양주센터	파주센터	사업기획팀	그로스팀	CX팀
       joinDate: "",
       level: "",
-      jobGroupId: 0,
+      password: "",
     },
   });
 
@@ -47,6 +48,8 @@ export function NewUserForm() {
         console.error("Unexpected error:", error);
         toast.error("Unexpected error");
       }
+    } finally {
+      redirect("/admin/accounts");
     }
   };
 
@@ -153,15 +156,15 @@ export function NewUserForm() {
               }
             />
             <ListItem
-              title="직무그룹"
+              title="비밀번호"
               detail={
                 <FormField
                   control={form.control}
-                  name="jobGroupId"
+                  name="password"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="직무그룹" {...field}></Input>
+                        <Input placeholder="비밀번호" {...field}></Input>
                       </FormControl>
                     </FormItem>
                   )}
