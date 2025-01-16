@@ -238,15 +238,17 @@ export function ListButton({
   detail,
   title,
   onClick,
+  left,
 }: {
   title?: React.ReactNode;
   detail?: React.ReactNode;
   onClick?: () => void; // onClick 추가
+  left?: boolean;
 }) {
   return (
     <ListItemContainer>
       <button
-        className="w-full text-blue-500 dark:text-blue-400"
+        className={`w-full text-blue-500 dark:text-blue-400 ${left && "text-left"}`}
         onClick={onClick}
       >
         {detail ? (

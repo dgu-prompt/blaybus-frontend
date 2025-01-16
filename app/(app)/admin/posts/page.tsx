@@ -4,8 +4,6 @@ import { NavigationBar } from "@/components/navigation-bar";
 import { List, ListItem, Section } from "@/components/grouped-list";
 import { NewButton } from "./_components/new-button";
 import { getPosts } from "./_actions/get-posts";
-import { formatDistanceToNow } from "date-fns";
-import { ko } from "date-fns/locale";
 
 interface Post {
   postId: string;
