@@ -1,6 +1,6 @@
 "use client";
 
-import { Bar, BarChart } from "recharts";
+import { Bar, BarChart, Cell } from "recharts";
 import { useIsClient } from "@/hooks/use-is-client";
 
 export function HRQuestChart({
@@ -8,11 +8,11 @@ export function HRQuestChart({
 }: {
   data: {
     bangi: string;
-    d: number;
-    c: number;
-    b: number;
-    a: number;
-    s: number;
+    d: { expDo: number; fill?: string };
+    c: { expDo: number; fill?: string };
+    b: { expDo: number; fill?: string };
+    a: { expDo: number; fill?: string };
+    s: { expDo: number; fill?: string };
   }[];
 }) {
   const isClient = useIsClient();
@@ -24,44 +24,58 @@ export function HRQuestChart({
       width={96}
       height={48}
       data={data}
-      barCategoryGap="10%"
-      margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
+      barCategoryGap="0%"
+      margin={{ top: 10, right: 0, left: 20, bottom: 0 }}
     >
-      <Bar
-        dataKey="d"
-        stackId="z"
-        radius={[4, 4, 4, 4]}
-        fill="hsl(var(--border))"
-        background={{ fill: "transparent" }}
-      />
-      <Bar
-        dataKey="c"
-        stackId="z"
-        radius={[4, 4, 4, 4]}
-        fill="hsl(var(--chart-4))"
-        background={{ fill: "transparent" }}
-      />
-      <Bar
-        dataKey="b"
-        stackId="z"
-        radius={[4, 4, 4, 4]}
-        fill="hsl(var(--border))"
-        background={{ fill: "transparent" }}
-      />
-      <Bar
-        dataKey="a"
-        stackId="z"
-        radius={[4, 4, 4, 4]}
-        fill="hsl(var(--border))"
-        background={{ fill: "transparent" }}
-      />
-      <Bar
-        dataKey="s"
-        stackId="z"
-        radius={[4, 4, 4, 4]}
-        fill="hsl(var(--border))"
-        background={{ fill: "transparent" }}
-      />
+      {/* Bar for 'd' */}
+      <Bar dataKey="d.expDo" stackId="z" radius={[4, 4, 4, 4]}>
+        {data.map((entry, index) => (
+          <Cell
+            key={`d-${index}`}
+            fill={entry.d.fill || "hsl(var(--border))"}
+          />
+        ))}
+      </Bar>
+
+      {/* Bar for 'c' */}
+      <Bar dataKey="c.expDo" stackId="z" radius={[4, 4, 4, 4]}>
+        {data.map((entry, index) => (
+          <Cell
+            key={`c-${index}`}
+            fill={entry.c.fill || "hsl(var(--border))"}
+          />
+        ))}
+      </Bar>
+
+      {/* Bar for 'b' */}
+      <Bar dataKey="b.expDo" stackId="z" radius={[4, 4, 4, 4]}>
+        {data.map((entry, index) => (
+          <Cell
+            key={`b-${index}`}
+            fill={entry.b.fill || "hsl(var(--border))"}
+          />
+        ))}
+      </Bar>
+
+      {/* Bar for 'a' */}
+      <Bar dataKey="a.expDo" stackId="z" radius={[4, 4, 4, 4]}>
+        {data.map((entry, index) => (
+          <Cell
+            key={`a-${index}`}
+            fill={entry.a.fill || "hsl(var(--border))"}
+          />
+        ))}
+      </Bar>
+
+      {/* Bar for 's' */}
+      <Bar dataKey="s.expDo" stackId="z" radius={[4, 4, 4, 4]}>
+        {data.map((entry, index) => (
+          <Cell
+            key={`s-${index}`}
+            fill={entry.s.fill || "hsl(var(--border))"}
+          />
+        ))}
+      </Bar>
     </BarChart>
   );
 }
