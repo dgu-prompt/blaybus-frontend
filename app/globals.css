@@ -119,6 +119,10 @@ body {
   .pr-safe-or-4 {
     padding-right: max(env(safe-area-inset-right), 1rem);
   }
+
+  .top-safe {
+    top: max(env(safe-area-inset-top), 1rem);
+  }
 }
 
 @layer utilities {

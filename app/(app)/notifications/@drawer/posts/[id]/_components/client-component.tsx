@@ -35,7 +35,7 @@ export default function ClientComponent({
   return (
     <Drawer open={true} onOpenChange={() => router.back()}>
       <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="pb-safe mx-auto w-full max-w-sm">
           <DrawerHeader>
             <span hidden>
               <DrawerTitle>{post.title}</DrawerTitle>
@@ -49,7 +49,7 @@ export default function ClientComponent({
             </span>
           </DrawerHeader>
 
-          <DrawerFooter>
+          <DrawerFooter className="">
             <DrawerClose asChild>
               <Button variant="outline">닫기</Button>
             </DrawerClose>

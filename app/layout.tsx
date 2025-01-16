@@ -53,8 +53,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              className: "top-safe",
+            }}
+          />
           {children}
-          <Toaster position="top-center" />
         </ThemeProvider>
       </body>
     </html>
