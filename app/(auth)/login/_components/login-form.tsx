@@ -60,10 +60,9 @@ export function LoginForm() {
             className="flex flex-col items-center gap-2 font-semibold"
           >
             <div className="mb-2 flex h-16 w-16 items-center justify-center overflow-hidden rounded-xl border">
-              {/* <GalleryVerticalEnd className="size-10" /> */}
               <Image src={appIcon} alt={"icon"} width={64} height={64} />
             </div>
-            <span className="sr-only">Acme Inc.</span>
+            <span className="sr-only">두더디</span>
           </a>
           <h1 className="text-2xl font-bold">두더디</h1>
           <p className="text-center text-muted-foreground">
