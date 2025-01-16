@@ -6,7 +6,7 @@ import { useIsClient } from "@/hooks/use-is-client";
 export function LeaderQuestChart({
   data,
 }: {
-  data: { month: number; expDo: number; fill?: string }[];
+  data: { period: number; expDo: number; fill?: string }[];
 }) {
   const isClient = useIsClient();
 

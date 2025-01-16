@@ -42,7 +42,27 @@ export async function JobQuestSection() {
 
   // 병합 처리
   const mergedData: JobQuest[] = [...weekData, ...monthData];
-  console.log("fetched", monthData);
+
+  if (mergedData.length === 0) {
+    return (
+      <Section>
+        <ListItem
+          title={
+            <HStack className="gap-2 text-chart-1">
+              <Briefcase className="size-5" />
+              <span className="font-medium">직무 퀘스트</span>
+            </HStack>
+          }
+        >
+          <HStack className="items-end">
+            <span className="text-sm text-muted-foreground">
+              직무 퀘스트 데이터가 없습니다.
+            </span>
+          </HStack>
+        </ListItem>
+      </Section>
+    );
+  }
 
   return (
     <Section>
@@ -51,6 +71,9 @@ export async function JobQuestSection() {
         const currentPeriod = quest.questsProgress.find(
           (progress) => progress.isCurrentPeriod,
         );
+
+        const periodString = quest.frequencyType == "WEEK" ? "주차" : "월";
+        const detailString = `${currentPeriod?.period || "-"}${periodString}`;
 
         // 차트 데이터 생성
         const chartData = quest.questsProgress.map((progress) => ({
@@ -67,11 +90,11 @@ export async function JobQuestSection() {
               <HStack className="gap-2 text-chart-1">
                 <Briefcase className="size-5" />
                 <span className="font-medium">
-                  {quest.departmentId} - 직무 퀘스트
+                  {quest.departmentId} 직무 퀘스트
                 </span>
               </HStack>
             }
-            detail={`${currentPeriod?.period || "-"}주차`}
+            detail={detailString}
           >
             <HStack className="items-end">
               <span className="mr-auto">
