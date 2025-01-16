@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { ListItem } from "@/components/list";
 import { setNotificationRead } from "../_actions/set-notification-read";
+import { formatDistanceToNow } from "date-fns";
+import { ko } from "date-fns/locale";
 
 function NotificationIndicator({ isRead }: { isRead: boolean }) {
   return isRead ? (
@@ -17,12 +19,21 @@ export function NotificationListItem({
 }: {
   notification: {
     notificationId: string;
-    is_read: boolean;
     content: string;
+    updated_at: string;
+    created_at: string;
+    is_read: boolean;
     type: string;
   };
 }) {
   const [isRead, setIsRead] = useState<boolean>(notification.is_read);
+
+  const updatedAtRelative = notification.updated_at
+    ? formatDistanceToNow(new Date(notification.updated_at), {
+        addSuffix: true,
+        locale: ko,
+      })
+    : null;
 
   return (
     <ListItem
@@ -30,7 +41,7 @@ export function NotificationListItem({
       containerClassName="active:bg-accent"
     >
       <button
-        className="flex items-center gap-2 text-left"
+        className="flex w-full items-center gap-2 text-left"
         onClick={async () => {
           await setNotificationRead(notification.notificationId);
           setIsRead(true);
@@ -41,6 +52,9 @@ export function NotificationListItem({
         {/* <UpdateNotificationButton
                 action={`mark-read/${notification.id}`}
               /> */}
+        <span className="ml-auto text-sm text-muted-foreground">
+          {updatedAtRelative}
+        </span>
       </button>
     </ListItem>
   );

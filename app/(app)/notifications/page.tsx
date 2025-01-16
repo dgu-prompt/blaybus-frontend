@@ -12,20 +12,25 @@ import { ListItem } from "@/components/list";
 
 interface Notification {
   notificationId: string;
-  is_read: boolean;
   content: string;
+  updated_at: string;
+  created_at: string;
+  is_read: boolean;
   type: string;
 }
 
 interface Post {
   id: string;
-  postTitle: string;
+  title: string;
   content: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export default async function Page() {
   const { fcmToken } = await getPushNotificationSettings();
   const notifications = await getNotifications();
+  console.log(notifications);
   const posts = await getPosts();
 
   // const unreadCount = notifications.filter((n) => !n.isRead).length;
@@ -62,7 +67,7 @@ export default async function Page() {
           </Section>
         )}
         <Section header="게시판">
-          {posts.map((post: Post) => (
+          {posts.posts.map((post: Post) => (
             <PostListItem key={post.id} post={post} />
           ))}
           <div className="mb-4" />
