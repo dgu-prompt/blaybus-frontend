@@ -19,7 +19,7 @@ export default function Page() {
         <Section>
           <HelloView />
         </Section>
-        <Section>
+        <Section header="나의 성장">
           <ListItem
             title={<span className="font-medium">작년 대비 나의 성장</span>}
           >

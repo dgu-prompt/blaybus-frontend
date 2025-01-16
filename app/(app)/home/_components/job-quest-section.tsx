@@ -65,7 +65,7 @@ export async function JobQuestSection() {
   }
 
   return (
-    <Section>
+    <Section header="퀘스트">
       {mergedData.map((quest) => {
         // 현재 주기 데이터 찾기
         const currentPeriod = quest.questsProgress.find(
