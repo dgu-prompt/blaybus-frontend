@@ -17,14 +17,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-const chartData = [
-  { category: "상반기 인사평가", points: 1500, fill: "hsl(var(--chart-1))" },
-  { category: "하반기 인사평가", points: 3000, fill: "hsl(var(--chart-2))" },
-  { category: "직무별 퀘스트", points: 2640, fill: "hsl(var(--chart-3))" },
-  { category: "리더부여 퀘스트", points: 517, fill: "hsl(var(--chart-4))" },
-  { category: "전사 프로젝트", points: 0, fill: "hsl(var(--chart-5))" },
-];
-
 const chartConfig = {
   상반기_인사평가: {
     label: "상반기 인사평가",
@@ -59,7 +51,7 @@ export function ExperienceChart({
 }) {
   const totalPoints = React.useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.points, 0);
-  }, []);
+  }, [data]);
 
   return (
     <Card>
