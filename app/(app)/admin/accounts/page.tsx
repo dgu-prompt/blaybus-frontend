@@ -20,7 +20,7 @@ export default async function Page() {
 
   return (
     <>
-      <NavigationBar title="회원 관리" actionButton={<NewButton />} />
+      <NavigationBar title="구성원 관리" actionButton={<NewButton />} />
       <List>
         <Section>
           {users.map((user: User) => (
