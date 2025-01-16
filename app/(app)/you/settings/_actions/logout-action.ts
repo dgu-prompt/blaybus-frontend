@@ -12,6 +12,7 @@ export async function handleLogoutAction() {
       method: "POST",
     });
     cookieStore.delete("auth_token");
+    cookieStore.delete("fcm_token");
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error("로그아웃 에러:", error);

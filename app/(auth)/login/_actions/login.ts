@@ -46,6 +46,7 @@ export async function handleLoginAction({
       path: "/",
       maxAge: JWT_EXPIRATION_MILLISECONDS, // API에서 제공한 만료 시간 (초 단위)
     });
+    cookieStore.delete("fcm_token");
 
     return { token };
   } catch (error: unknown) {
