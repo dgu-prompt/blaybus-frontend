@@ -79,7 +79,7 @@ export default async function JobQuestDetails() {
 
   return (
     <>
-      <NavigationBar title="직무 퀘스트" />
+      <NavigationBar title={`${quest.departmentId} 직무 퀘스트`} />
       <List>
         <Section>
           <ListItem
@@ -87,7 +87,7 @@ export default async function JobQuestDetails() {
               <HStack className="gap-2 text-chart-1">
                 <Briefcase className="size-5" />
                 <span className="font-medium">
-                  {quest.departmentId} - 직무 퀘스트
+                  {quest.departmentId} 직무 퀘스트
                 </span>
               </HStack>
             }
