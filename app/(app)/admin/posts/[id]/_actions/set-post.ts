@@ -7,7 +7,7 @@ export async function setPost(
   formData: { postTitle: string; content: string },
 ) {
   try {
-    const response = await fetchWithAuth(`/api/admin/posts/${id}`, {
+    const response = await fetchWithAuth(`/api/post/${id}`, {
       method: "PUT",
       body: JSON.stringify(formData),
     });

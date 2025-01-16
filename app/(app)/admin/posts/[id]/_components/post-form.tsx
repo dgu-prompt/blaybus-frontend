@@ -48,6 +48,8 @@ export function PostForm({ post }: { post: Post }) {
         console.error("Unexpected error:", error);
         toast.error("Unexpected error");
       }
+    } finally {
+      redirect("/adwmin/posts");
     }
   };
 
