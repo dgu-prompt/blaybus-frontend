@@ -64,7 +64,7 @@ export default async function Page({
         ? quest.maxExpDo
         : progress.status === "MEDIUM"
           ? quest.medianExpDo
-          : 1,
+          : 0,
     fill:
       progress.status === "MAX"
         ? "hsla(var(--chart-2) / 0.5)"

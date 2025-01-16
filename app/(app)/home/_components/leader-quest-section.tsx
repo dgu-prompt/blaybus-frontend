@@ -84,7 +84,7 @@ export async function LeaderQuestSection() {
               ? quest.maxExpDo
               : progress.status === "MEDIUM"
                 ? quest.medianExpDo
-                : 3,
+                : 0,
           fill: progress.isCurrentPeriod ? "hsl(var(--chart-2))" : undefined,
         }));
 

@@ -59,7 +59,7 @@ export default async function JobQuestDetails() {
         ? quest.maxExpDo
         : progress.status === "MEDIUM"
           ? quest.medianExpDo
-          : 1,
+          : 0,
     fill:
       progress.status === "MAX"
         ? "hsla(var(--chart-1) / 0.5)"
