@@ -49,9 +49,6 @@ export function NotificationListItem({
       >
         <NotificationIndicator isRead={isRead} />
         {notification.content}
-        {/* <UpdateNotificationButton
-                action={`mark-read/${notification.id}`}
-              /> */}
         <span className="ml-auto mt-0.5 shrink-0 text-sm text-muted-foreground">
           {updatedAtRelative}
         </span>
