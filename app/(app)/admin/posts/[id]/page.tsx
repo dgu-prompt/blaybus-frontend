@@ -9,7 +9,6 @@ export default async function Page({
 }) {
   const { id } = await params;
   const post = await getPost(id);
-  console.log(post);
 
   return (
     <>

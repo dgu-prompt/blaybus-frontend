@@ -8,7 +8,6 @@ import { getUserInfo } from "./_actions/get-user-info";
 
 export default async function Page() {
   const userData = await getUserInfo();
-  console.log(userData);
 
   return (
     <>

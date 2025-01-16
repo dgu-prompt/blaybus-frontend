@@ -50,7 +50,6 @@ export default async function Page({
   const mergedData: JobQuest[] = [...weekData, ...monthData];
   const quest = mergedData.find((datum) => datum.questId === parseInt(id, 10));
   if (!quest) return null;
-  console.log(quest);
 
   const currentPeriod = quest.questsProgress.find(
     (progress) => progress.isCurrentPeriod,

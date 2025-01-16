@@ -30,7 +30,6 @@ interface Post {
 export default async function Page() {
   const { fcmToken } = await getPushNotificationSettings();
   const notifications = await getNotifications();
-  console.log(notifications);
   const posts = await getPosts();
 
   // const unreadCount = notifications.filter((n) => !n.isRead).length;
