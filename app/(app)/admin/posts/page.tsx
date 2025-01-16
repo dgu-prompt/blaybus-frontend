@@ -4,8 +4,6 @@ import { NavigationBar } from "@/components/navigation-bar";
 import { List, ListItem, Section } from "@/components/grouped-list";
 import { NewButton } from "./_components/new-button";
 import { getPosts } from "./_actions/get-posts";
-import { formatDistanceToNow } from "date-fns";
-import { ko } from "date-fns/locale";
 
 interface Post {
   postId: string;
@@ -25,18 +23,10 @@ export default async function Page() {
       <List>
         <Section>
           {posts.posts.map((post: Post) => {
-            const updatedAtRelative = post.updatedAt
-              ? formatDistanceToNow(new Date(post.updatedAt), {
-                  addSuffix: true,
-                  locale: ko,
-                })
-              : null;
-
             return (
               <ListItem
                 key={post.postId}
-                title={post.title}
-                detail={updatedAtRelative}
+                title={<span className="line-clamp-1">{post.title}</span>}
                 href={`/admin/posts/${post.postId}`}
               />
             );

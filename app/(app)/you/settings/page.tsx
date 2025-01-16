@@ -20,7 +20,7 @@ export default function Page() {
           />
         </Section>
         <Section header="앱 설정">
-          <ListItem title="알림" href="/you/settings/notifications" />
+          {/* <ListItem title="알림" href="/you/settings/notifications" /> */}
           <ListItem title="앱 테마" href="/you/settings/theme" />
           {/* <ListItem title="언어 (구현 예정)" href="/settings/language" /> */}
         </Section>

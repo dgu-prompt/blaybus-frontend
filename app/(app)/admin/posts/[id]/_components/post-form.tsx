@@ -1,11 +1,16 @@
 "use client";
 
 import { z } from "zod";
-import { List, ListButton, ListItem, Section } from "@/components/grouped-list";
+import {
+  List,
+  ListButton,
+  ListInput,
+  ListItem,
+  Section,
+} from "@/components/grouped-list";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
 import { deletePost } from "../_actions/delete-post";
@@ -75,22 +80,23 @@ export function PostForm({ post }: { post: Post }) {
       <form onSubmit={form.handleSubmit(handleFormSubmit)} className="w-full">
         <List>
           <Section>
-            <ListItem
-              title="제목"
-              detail={
-                <FormField
-                  control={form.control}
-                  name="postTitle"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input placeholder="제목" {...field}></Input>
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-              }
-            />
+            <ListItem title="제목">
+              <FormField
+                control={form.control}
+                name="postTitle"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <ListInput
+                        placeholder="제목"
+                        {...field}
+                        className="text-start"
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </ListItem>
             <ListItem title="내용">
               <FormField
                 control={form.control}
@@ -98,7 +104,11 @@ export function PostForm({ post }: { post: Post }) {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea placeholder="내용" {...field}></Textarea>
+                      <Textarea
+                        placeholder="내용"
+                        {...field}
+                        className="rounded-none border-none p-0 text-foreground shadow-none focus-visible:ring-0 active:border-none"
+                      />
                     </FormControl>
                   </FormItem>
                 )}

@@ -9,12 +9,8 @@ export default function Page() {
       <List>
         <Section header="관리자">
           <ListItem title="구성원 관리" href="/admin/accounts/" />
-          <ListItem title="알림 관리" href="/admin/notifications" />
           <ListItem title="게시글 관리" href="/admin/posts" />
           <SyncGoogleSheetsButton />
-        </Section>
-        <Section header="개발자">
-          <ListItem title="푸시 알림 테스트" href="/admin/push-test" />
         </Section>
       </List>
     </>

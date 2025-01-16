@@ -13,5 +13,7 @@ export function SyncGoogleSheetsButton() {
     });
   };
 
-  return <ListButton title="Google Sheet 지금 동기화" onClick={handleClick} />;
+  return (
+    <ListButton title="Google Sheet 지금 동기화" onClick={handleClick} left />
+  );
 }

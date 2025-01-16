@@ -86,7 +86,7 @@ export default async function Page({
 
   return (
     <>
-      <NavigationBar title={`${quest.questTitle} 리더부여 퀘스트`} />
+      <NavigationBar title={`${quest.questTitle} 리더 퀘스트`} />
       <List>
         <Section>
           <ListItem
@@ -94,7 +94,7 @@ export default async function Page({
               <HStack className="gap-2 text-chart-2">
                 <Briefcase className="size-5" />
                 <span className="font-medium">
-                  {quest.questTitle} 리더부여 퀘스트
+                  {quest.questTitle} 리더 퀘스트
                 </span>
               </HStack>
             }

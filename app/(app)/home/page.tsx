@@ -9,6 +9,7 @@ import { JobQuestSection } from "./_components/job-quest-section";
 import { ProjectQuestSection } from "./_components/project-quest-section";
 import { HelloView } from "./_components/hello-view";
 import { ExperienceProgress } from "./_components/experience-progress";
+import RankingSection from "./_components/ranking-section";
 
 export default function Page() {
   return (
@@ -18,7 +19,7 @@ export default function Page() {
         <Section>
           <HelloView />
         </Section>
-        <Section>
+        <Section header="나의 성장">
           <ListItem
             title={<span className="font-medium">작년 대비 나의 성장</span>}
           >
@@ -37,6 +38,7 @@ export default function Page() {
           <ProjectQuestSection />
           <HRQuestSection />
         </VStack>
+        <RankingSection />
       </List>
     </>
   );
