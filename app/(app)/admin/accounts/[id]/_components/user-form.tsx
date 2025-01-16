@@ -1,11 +1,16 @@
 "use client";
 
 import { z } from "zod";
-import { List, ListButton, ListItem, Section } from "@/components/grouped-list";
+import {
+  List,
+  ListButton,
+  ListInput,
+  ListItem,
+  Section,
+} from "@/components/grouped-list";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { setUser } from "../_actions/set-user";
 import { redirect } from "next/navigation";
@@ -61,9 +66,6 @@ export function UserForm({ user }: { user: User }) {
             <ListItem title="이름" detail={user.employeeName} />
             <ListItem title="사번" detail={user.employeeNumber} />
             <ListItem title="입사일" detail={user.joinDate} />
-            <ListItem title="직무그룹" detail={user.jobGroupId} />
-          </Section>
-          <Section>
             <ListItem
               title="소속"
               detail={
@@ -73,13 +75,16 @@ export function UserForm({ user }: { user: User }) {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="소속" {...field}></Input>
+                        <ListInput placeholder="소속" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
                 />
               }
             />
+            <ListItem title="직무그룹" detail={user.jobGroupId} />
+          </Section>
+          <Section>
             <ListItem
               title="레벨"
               detail={
@@ -89,14 +94,13 @@ export function UserForm({ user }: { user: User }) {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="레벨" {...field}></Input>
+                        <ListInput placeholder="레벨" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
                 />
               }
             />
-            {/* <ListItem title="총 경험치" detail={`${userData.totalExp} do`} /> */}
           </Section>
           <Section>
             <ListButton

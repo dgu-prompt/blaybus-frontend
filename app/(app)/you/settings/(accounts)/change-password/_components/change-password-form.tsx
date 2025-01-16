@@ -1,7 +1,13 @@
 "use client";
 
 import { z } from "zod";
-import { List, ListButton, ListItem, Section } from "@/components/grouped-list";
+import {
+  List,
+  ListButton,
+  ListInput,
+  ListItem,
+  Section,
+} from "@/components/grouped-list";
 import {
   Form,
   FormControl,
@@ -11,9 +17,7 @@ import {
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-
 import { redirect } from "next/navigation";
 import { changePassword } from "../_actions/change-password";
 
@@ -96,9 +100,9 @@ export function ChangePasswordForm({ user }: { user: User }) {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input
+                        <ListInput
                           placeholder="현재 비밀번호"
-                          type="password"
+                          type="text"
                           {...field}
                         />
                       </FormControl>
@@ -117,9 +121,10 @@ export function ChangePasswordForm({ user }: { user: User }) {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input
+                        <ListInput
                           placeholder="새 비밀번호"
-                          type="password"
+                          type="text"
+                          className="어쩌고"
                           {...field}
                         />
                       </FormControl>
@@ -138,9 +143,9 @@ export function ChangePasswordForm({ user }: { user: User }) {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input
+                        <ListInput
                           placeholder="새 비밀번호 확인"
-                          type="password"
+                          type="text"
                           {...field}
                         />
                       </FormControl>

@@ -14,6 +14,7 @@ export default function Page() {
           <SyncGoogleSheetsButton />
         </Section>
         <Section header="개발자">
+          <ListItem title="테스트" href="/admin/test" />
           <ListItem title="푸시 알림 테스트" href="/admin/push-test" />
         </Section>
       </List>

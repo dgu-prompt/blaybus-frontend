@@ -1,11 +1,16 @@
 "use client";
 
 import { z } from "zod";
-import { List, ListButton, ListItem, Section } from "@/components/grouped-list";
+import {
+  List,
+  ListButton,
+  ListInput,
+  ListItem,
+  Section,
+} from "@/components/grouped-list";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { newPost } from "../_actions/new-post";
 import { Textarea } from "@/components/ui/textarea";
@@ -53,7 +58,11 @@ export function PostForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="제목" {...field}></Input>
+                      <ListInput
+                        placeholder="제목"
+                        {...field}
+                        className="text-start"
+                      />
                     </FormControl>
                   </FormItem>
                 )}
@@ -66,7 +75,11 @@ export function PostForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea placeholder="내용" {...field}></Textarea>
+                      <Textarea
+                        placeholder="내용"
+                        {...field}
+                        className="rounded-none border-none p-0 text-foreground shadow-none focus-visible:ring-0 active:border-none"
+                      />
                     </FormControl>
                   </FormItem>
                 )}

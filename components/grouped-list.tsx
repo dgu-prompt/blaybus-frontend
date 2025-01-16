@@ -1,7 +1,8 @@
-import { Children, cloneElement, isValidElement } from "react";
+import { Children, cloneElement, forwardRef, isValidElement } from "react";
 import { Container, Wrapper } from "./container";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
+import { Input } from "./ui/input";
 
 export function Box({
   children,
@@ -262,3 +263,24 @@ export function ListButton({
     </ListItemContainer>
   );
 }
+
+interface ListInputProps extends React.ComponentPropsWithoutRef<"input"> {
+  className?: string;
+}
+
+export const ListInput = forwardRef<HTMLInputElement, ListInputProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <Input
+        ref={ref}
+        className={cn(
+          "h-fit rounded-none border-none p-0 text-end text-foreground shadow-none focus-visible:ring-0 active:border-none",
+          className,
+        )} // 기본 클래스 + 전달된 클래스 병합
+        {...props} // 나머지 props 전달
+      />
+    );
+  },
+);
+
+ListInput.displayName = "ListInput";

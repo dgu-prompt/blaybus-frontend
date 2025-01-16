@@ -25,18 +25,10 @@ export default async function Page() {
       <List>
         <Section>
           {posts.posts.map((post: Post) => {
-            const updatedAtRelative = post.updatedAt
-              ? formatDistanceToNow(new Date(post.updatedAt), {
-                  addSuffix: true,
-                  locale: ko,
-                })
-              : null;
-
             return (
               <ListItem
                 key={post.postId}
-                title={post.title}
-                detail={updatedAtRelative}
+                title={<span className="line-clamp-1">{post.title}</span>}
                 href={`/admin/posts/${post.postId}`}
               />
             );

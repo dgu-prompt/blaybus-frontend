@@ -1,11 +1,16 @@
 "use client";
 
 import { z } from "zod";
-import { List, ListButton, ListItem, Section } from "@/components/grouped-list";
+import {
+  List,
+  ListButton,
+  ListInput,
+  ListItem,
+  Section,
+} from "@/components/grouped-list";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { newUser } from "../_actions/new-user";
 import { redirect } from "next/navigation";
@@ -67,7 +72,7 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="사번" {...field}></Input>
+                        <ListInput placeholder="사번" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
@@ -83,7 +88,7 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="이름" {...field}></Input>
+                        <ListInput placeholder="이름" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
@@ -99,7 +104,7 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="아이디" {...field}></Input>
+                        <ListInput placeholder="아이디" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
@@ -115,7 +120,7 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="부서" {...field}></Input>
+                        <ListInput placeholder="부서" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
@@ -132,7 +137,10 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="입사일" {...field}></Input>
+                        <ListInput
+                          placeholder="yyyy-MM-dd"
+                          {...field}
+                        ></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
@@ -148,7 +156,7 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="레벨" {...field}></Input>
+                        <ListInput placeholder="레벨" {...field}></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
@@ -164,7 +172,10 @@ export function NewUserForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="비밀번호" {...field}></Input>
+                        <ListInput
+                          placeholder="비밀번호"
+                          {...field}
+                        ></ListInput>
                       </FormControl>
                     </FormItem>
                   )}
