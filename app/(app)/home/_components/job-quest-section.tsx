@@ -83,7 +83,7 @@ export async function JobQuestSection() {
               ? quest.maxExpDo
               : progress.status === "MEDIUM"
                 ? quest.medianExpDo
-                : 3,
+                : 0,
           fill: progress.isCurrentPeriod ? "hsl(var(--chart-1))" : undefined,
         }));
 
