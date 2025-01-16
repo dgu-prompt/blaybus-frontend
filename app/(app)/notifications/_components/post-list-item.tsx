@@ -7,32 +7,34 @@ export function PostListItem({
   post,
 }: {
   post: {
-    id: string;
+    postId: string;
     title: string;
     content: string;
     createdAt?: string;
     updatedAt?: string;
   };
 }) {
-  const updatedAtRelative = post.updatedAt
-    ? formatDistanceToNow(new Date(post.updatedAt), {
+  const timestamp = post.updatedAt ? post.updatedAt : post.createdAt;
+  const relativeTimestamp = timestamp
+    ? formatDistanceToNow(new Date(timestamp), {
         addSuffix: true,
         locale: ko,
       })
     : null;
 
   return (
-    <ListItem key={post.id} containerClassName="active:bg-accent">
+    <ListItem
+      key={post.postId}
+      containerClassName="active:bg-accent"
+      href={`/notifications/posts/${post.postId}`}
+    >
       <VStack>
-        <HStack className="items-start">
-          <span>{post.title}</span>
+        <HStack className="items-start gap-4">
+          <span className="line-clamp-1">{post.title}</span>
           <span className="ml-auto mt-0.5 shrink-0 text-sm text-muted-foreground">
-            {updatedAtRelative}
+            {relativeTimestamp}
           </span>
         </HStack>
-        {post.content && (
-          <span className="text-sm text-muted-foreground">{post.content}</span>
-        )}
       </VStack>
     </ListItem>
   );
