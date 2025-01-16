@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { fetchWithAuth } from "@/lib/fetch-with-auth";
 import { app as firebaseApp } from "@/lib/firebase";
 import { getMessaging, getToken } from "firebase/messaging";
 import { setFCMTokenCookie } from "../_actions/set-fcm-token-cookie";
 import { VStack } from "@/components/grouped-list";
 import { useEffect, useState } from "react";
+import { storeFCMToken } from "../_actions/store-fcm-token";
 
 function isFCMSupported(): boolean {
   return (
@@ -40,18 +40,11 @@ async function requestNotificationPermission() {
       return;
     }
 
-    // 3. 서버로 토큰 전달
-    const requestUrl = `/api/notifications/fcm/token?fcmToken=${fcmToken}`;
-    const response = await fetchWithAuth(requestUrl, {
-      method: "POST",
-    });
+    alert(fcmToken);
 
-    // 성공 여부 확인
-    if (!response.ok) {
-      const errorDetails = await response.text(); // 서버에서 반환된 에러 메시지
-      console.error(`Failed to store fcmToken on Server: ${errorDetails}`);
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
-    }
+    await storeFCMToken(fcmToken);
+
+    alert(2);
 
     await setFCMTokenCookie(fcmToken);
     alert("알림이 설정되었습니다!");
