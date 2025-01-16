@@ -7,6 +7,8 @@ import { setFCMTokenCookie } from "../_actions/set-fcm-token-cookie";
 import { VStack } from "@/components/grouped-list";
 import { useEffect, useState } from "react";
 import { storeFCMToken } from "../_actions/store-fcm-token";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
 
 function isFCMSupported(): boolean {
   return (
@@ -40,16 +42,13 @@ async function requestNotificationPermission() {
       return;
     }
 
-    alert(fcmToken);
-
     await storeFCMToken(fcmToken);
-
-    alert(2);
-
     await setFCMTokenCookie(fcmToken);
-    alert("알림이 설정되었습니다!");
+    toast.success("알림이 설정되었습니다.");
   } catch (error) {
     console.error("Failed to request notification permission:", error);
+  } finally {
+    redirect("/notifications");
   }
 }
 

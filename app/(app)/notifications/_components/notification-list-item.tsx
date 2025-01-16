@@ -8,9 +8,9 @@ import { ko } from "date-fns/locale";
 
 function NotificationIndicator({ isRead }: { isRead: boolean }) {
   return isRead ? (
-    <div className="size-2 rounded-full"></div>
+    <div className="size-2 shrink-0 rounded-full"></div>
   ) : (
-    <div className="size-2 rounded-full bg-blue-400"></div>
+    <div className="my-2 size-2 shrink-0 rounded-full bg-blue-400"></div>
   );
 }
 
@@ -41,7 +41,7 @@ export function NotificationListItem({
       containerClassName="active:bg-accent"
     >
       <button
-        className="flex w-full items-center gap-2 text-left"
+        className="items-top flex w-full gap-2 text-left"
         onClick={async () => {
           await setNotificationRead(notification.notificationId);
           setIsRead(true);
@@ -52,7 +52,7 @@ export function NotificationListItem({
         {/* <UpdateNotificationButton
                 action={`mark-read/${notification.id}`}
               /> */}
-        <span className="ml-auto text-sm text-muted-foreground">
+        <span className="ml-auto mt-0.5 shrink-0 text-sm text-muted-foreground">
           {updatedAtRelative}
         </span>
       </button>

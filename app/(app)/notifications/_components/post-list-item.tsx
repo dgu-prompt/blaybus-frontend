@@ -24,9 +24,9 @@ export function PostListItem({
   return (
     <ListItem key={post.id} containerClassName="active:bg-accent">
       <VStack>
-        <HStack>
+        <HStack className="items-start">
           <span>{post.title}</span>
-          <span className="ml-auto text-sm text-muted-foreground">
+          <span className="ml-auto mt-0.5 shrink-0 text-sm text-muted-foreground">
             {updatedAtRelative}
           </span>
         </HStack>

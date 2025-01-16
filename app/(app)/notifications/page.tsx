@@ -69,7 +69,7 @@ export default async function Page() {
           {posts.posts.map((post: Post) => (
             <PostListItem key={post.id} post={post} />
           ))}
-          <div className="mb-4" />
+          <div key="0" className="mb-4" />
         </Section>
       </List>
     </>
