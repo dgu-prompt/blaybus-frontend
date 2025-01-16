@@ -18,6 +18,8 @@ export async function ExpProgress() {
   const data = await getExpsSummary();
   const { totalExp, requiredExp, recentLv, nextLv } = data;
   const progress = (totalExp / requiredExp) * 100;
+  const leftExp = requiredExp - totalExp;
+  const formattedLeftExp = new Intl.NumberFormat("ko-KR").format(leftExp);
 
   return (
     <div className="flex w-full flex-col gap-2">
@@ -31,7 +33,7 @@ export async function ExpProgress() {
         {isNaN(progress) ? "0" : progress.toFixed(2)}%)
       </div>
       <div className="text-sm text-muted-foreground">
-        다음 레벨까지 {requiredExp - totalExp} do 남았습니다.
+        다음 레벨까지 {formattedLeftExp} do 남았습니다.
       </div>
     </div>
   );
