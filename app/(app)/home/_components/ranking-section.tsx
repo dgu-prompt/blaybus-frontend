@@ -1,6 +1,23 @@
 import { HStack, ListItem, Section } from "@/components/grouped-list";
 import { fetchWithAuth } from "@/lib/fetch-with-auth";
 
+interface Ranking {
+  employeeNumber: number;
+  employeeName: string;
+  totalExp: number;
+  recentLv: string;
+  rank: number;
+}
+
+interface RankingWithColor {
+  employeeNumber: number;
+  employeeName: string;
+  totalExp: number;
+  recentLv: string;
+  rank: number;
+  fill: string;
+}
+
 export async function getRanking() {
   try {
     const response = await fetchWithAuth("/api/exps/rank");
@@ -29,22 +46,24 @@ export async function getRanking() {
 export default async function RankingSection() {
   const ranking = await getRanking();
   const slicedRanking = ranking.slice(0, 5);
-  const coloredSlicedRanking = slicedRanking.map((item, index) => ({
-    ...item,
-    fill:
-      index === 0
-        ? "#D5A11E" // 금색
-        : index === 1
-          ? "#A3A3A3" // 은색
-          : index === 2
-            ? "#CD7F32" // 동색
-            : undefined, // 나머지 항목은 fill 없음
-  }));
+  const coloredSlicedRanking = slicedRanking.map(
+    (item: Ranking, index: number) => ({
+      ...item,
+      fill:
+        index === 0
+          ? "#D5A11E" // 금색
+          : index === 1
+            ? "#A3A3A3" // 은색
+            : index === 2
+              ? "#CD7F32" // 동색
+              : undefined, // 나머지 항목은 fill 없음
+    }),
+  );
   console.log(coloredSlicedRanking);
 
   return (
     <Section header="올해의 성장 랭킹">
-      {coloredSlicedRanking.map((item) => (
+      {coloredSlicedRanking.map((item: RankingWithColor) => (
         <ListItem
           key={item.rank}
           title={
