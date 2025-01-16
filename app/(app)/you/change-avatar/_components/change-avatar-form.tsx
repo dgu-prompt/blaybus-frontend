@@ -9,13 +9,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 // User 타입 정의
 interface User {
-  employeeNumber: string;
-  employeeName: string;
-  department: string;
-  joinDate: string;
-  level: string;
-  avatar: string; // 현재 아바타 URL
-  jobGroupId: 1;
+  characterUrl: string;
 }
 
 // 선택 가능한 아바타 목록
@@ -31,7 +25,9 @@ const availableAvatars = [
 ];
 
 export function ChangeAvatarForm({ user }: { user: User }) {
-  const [selectedAvatar, setSelectedAvatar] = useState<string>(user.avatar);
+  const [selectedAvatar, setSelectedAvatar] = useState<string>(
+    user.characterUrl,
+  );
 
   const handleFormSubmit = async () => {
     try {

@@ -1,5 +1,6 @@
 import { fetchWithAuth } from "@/lib/fetch-with-auth";
 import { Today } from "./today";
+import { Card } from "@/components/ui/card";
 
 // TODO: 유저 아이디 말고 실제 이름을 불러오도록
 export async function getUsername() {
@@ -20,11 +21,13 @@ export async function HelloView() {
   const user = await getUsername();
 
   return (
-    <div className="py-6 text-center font-semibold">
-      <div className="text-muted-foreground">
-        <Today />
+    <Card>
+      <div className="py-6 text-center font-semibold">
+        <div className="text-muted-foreground">
+          <Today />
+        </div>
+        <div className="text-lg">{user.employeeName}님, 오늘도 힘내봐요!</div>
       </div>
-      <div className="text-lg">{user.employeeName}님, 오늘도 힘내봐요!</div>
-    </div>
+    </Card>
   );
 }
