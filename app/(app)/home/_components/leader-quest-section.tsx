@@ -102,7 +102,7 @@ export async function LeaderQuestSection() {
               <HStack className="gap-2 text-chart-2">
                 <HandHeart className="size-5" />
                 <span className="font-medium">
-                  {quest.questTitle} 리더부여 퀘스트
+                  {quest.questTitle} 리더 퀘스트
                 </span>
               </HStack>
             }

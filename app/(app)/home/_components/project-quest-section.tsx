@@ -67,7 +67,9 @@ export async function ProjectQuestSection() {
             title={
               <HStack className="gap-2 text-chart-3">
                 <Target className="size-5" />
-                <span className="font-medium">{project.projectName}</span>
+                <span className="line-clamp-1 font-medium">
+                  {project.projectName} 프로젝트
+                </span>
               </HStack>
             }
           >
