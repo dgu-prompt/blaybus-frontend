@@ -60,6 +60,15 @@ export default async function JobQuestDetails() {
   }));
 
   const chartTicks = [0, quest.medianExpDo, quest.maxExpDo];
+  const periodString = quest.frequencyType == "WEEK" ? "주차" : "월";
+  const detailString = `${currentPeriod?.period || "-"}${periodString}`;
+
+  const totalExpDo = quest.questsProgress.reduce((total, progress) => {
+    return (
+      total + (progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo)
+    );
+  }, 0);
+  const formattedTotalExpDo = new Intl.NumberFormat("ko-KR").format(totalExpDo);
 
   return (
     <>
@@ -75,7 +84,7 @@ export default async function JobQuestDetails() {
                 </span>
               </HStack>
             }
-            detail={`${currentPeriod?.period || "-"}주차`}
+            detail={detailString}
           >
             <HStack className="items-end">
               <span className="mr-auto">
@@ -91,6 +100,7 @@ export default async function JobQuestDetails() {
             </HStack>
             <JobQuestChart data={chartData} ticks={chartTicks} />
           </ListItem>
+          <ListItem title={`총 ${formattedTotalExpDo} Do`}></ListItem>
         </Section>
         <Section header="모든 데이터">
           {quest.questsProgress

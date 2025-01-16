@@ -70,6 +70,13 @@ export default async function Page({
   const periodString = quest.frequencyType == "WEEK" ? "주차" : "월";
   const detailString = `${currentPeriod?.period || "-"}${periodString}`;
 
+  const totalExpDo = quest.questsProgress.reduce((total, progress) => {
+    return (
+      total + (progress.status === "MAX" ? quest.maxExpDo : quest.medianExpDo)
+    );
+  }, 0);
+  const formattedTotalExpDo = new Intl.NumberFormat("ko-KR").format(totalExpDo);
+
   return (
     <>
       <NavigationBar title={`${quest.questTitle} 리더부여 퀘스트`} />
@@ -100,6 +107,7 @@ export default async function Page({
             </HStack>
             <LeaderQuestChart data={chartData} ticks={chartTicks} />
           </ListItem>
+          <ListItem title={`총 ${formattedTotalExpDo} Do`}></ListItem>
         </Section>
         <Section header="모든 데이터">
           {quest.questsProgress
