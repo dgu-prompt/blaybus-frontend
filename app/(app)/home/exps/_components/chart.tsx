@@ -48,9 +48,17 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ExperienceChart() {
+export function ExperienceChart({
+  data,
+}: {
+  data: {
+    category: string;
+    points: number;
+    fill: string;
+  }[];
+}) {
   const totalPoints = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.points, 0);
+    return data.reduce((acc, curr) => acc + curr.points, 0);
   }, []);
 
   return (
@@ -70,7 +78,7 @@ export function ExperienceChart() {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={chartData}
+              data={data}
               dataKey="points"
               nameKey="category"
               innerRadius={60}

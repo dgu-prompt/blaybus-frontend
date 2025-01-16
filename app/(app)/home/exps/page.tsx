@@ -3,6 +3,7 @@ import { ExperienceChart } from "./_components/chart";
 import { ExperienceProgress } from "./_components/chart2";
 import { List, Section } from "@/components/grouped-list";
 import { ExperienceTable } from "./_components/exp-table";
+import ExperienceByTypeSection from "./_components/experience-by-type-section";
 
 export default async function Page() {
   return (
@@ -12,9 +13,7 @@ export default async function Page() {
         <Section>
           <ExperienceProgress />
         </Section>
-        <Section>
-          <ExperienceChart />
-        </Section>
+        <ExperienceByTypeSection />
         <Section header="레벨별 필요 경험치">
           <ExperienceTable />
         </Section>
