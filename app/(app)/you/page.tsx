@@ -8,6 +8,7 @@ import { getUserInfo } from "./_actions/get-user-info";
 
 export default async function Page() {
   const userData = await getUserInfo();
+  console.log(userData);
 
   return (
     <>
@@ -20,7 +21,7 @@ export default async function Page() {
         <Section>
           <ListItem>
             <div className="flex w-full flex-col items-center justify-center gap-4 py-6">
-              <Avatar className="size-32">
+              <Avatar className="size-32 border">
                 <AvatarImage src={userData.characterUrl} />
                 <AvatarFallback>{userData.employeeName}</AvatarFallback>
               </Avatar>
@@ -29,7 +30,7 @@ export default async function Page() {
               </span>
             </div>
           </ListItem>
-          <ListLink title="아바타 변경하기" href="#" />
+          <ListLink title="아바타 변경하기" href="/you/change-avatar" />
         </Section>
         <Section header="내 정보">
           <ListItem title="이름" detail={userData.employeeName} />
