@@ -1,5 +1,5 @@
 import { NavigationBar } from "@/components/navigation-bar";
-import { ExperienceProgress } from "./_components/chart2";
+import { ExperienceProgress } from "./_components/experience-progress";
 import { List, Section } from "@/components/grouped-list";
 import { ExperienceTable } from "./_components/exp-table";
 import ExperienceByTypeSection from "./_components/experience-by-type-section";
