@@ -1,13 +1,7 @@
 export const dynamic = "force-dynamic"; // 동적 렌더링 강제
 
 import { NavigationBar } from "@/components/navigation-bar";
-import {
-  HStack,
-  List,
-  ListItem,
-  Section,
-  VStack,
-} from "@/components/grouped-list";
+import { List, ListItem, Section, VStack } from "@/components/grouped-list";
 import { ExpProgress } from "./_components/progress";
 import { LeaderQuestSection } from "./_components/leader-quest-section";
 import { HRQuestSection } from "./_components/hr-quest-section";
