@@ -57,7 +57,7 @@ export function SectionHeader({
       <Wrapper className={cn(wrapperClassName)}>
         <div
           className={cn(
-            "ml-4 mt-5 flex items-center border-b py-2 pr-4 text-sm font-semibold text-muted-foreground",
+            "ml-4 mt-5 flex items-center border-b py-2 pr-4 text-xs font-semibold text-muted-foreground",
             className,
           )}
         >
