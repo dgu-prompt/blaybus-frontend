@@ -31,9 +31,6 @@ export default async function Page() {
   const { fcmToken } = await getPushNotificationSettings();
   const notifications = await getNotifications();
   const posts = await fetchAllPosts();
-  console.log(posts);
-
-  // const unreadCount = notifications.filter((n) => !n.isRead).length;
 
   return (
     <>
