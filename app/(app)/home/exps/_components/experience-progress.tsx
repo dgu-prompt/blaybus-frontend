@@ -11,7 +11,7 @@ export async function ExperienceProgress() {
   const trendLabel =
     data.prevYearExp === 0
       ? `${new Intl.NumberFormat("ko-KR").format(data.totalExp)} do`
-      : `${trendPercent}%`;
+      : `${trendPercent.toFixed(0)}%`;
 
   const chartData = [
     { year: lastYear, expDo: data.prevYearExp },
