@@ -26,15 +26,11 @@ export default async function ExperienceByTypeSection() {
     (item: ExpsHistory) => item.expYear === thisYear,
   );
 
-  console.log(thisYearHistories);
-
   const chartData = thisYearHistories.map((item: ExpsHistory) => ({
     category: expTypeLabel[item.expType], // 라벨 매핑
     points: item.expDo,
     fill: `hsl(var(--chart-${Object.keys(expTypeLabel).indexOf(item.expType) + 1}))`, // 색상 설정
   }));
-
-  console.log(chartData);
 
   return (
     <Section>

@@ -3,7 +3,6 @@ import { DelayedProgress } from "./delayed-progress";
 
 export async function ExpProgress() {
   const data = await getExpsSummary();
-  console.log(data);
   const { totalExp, requiredExp, recentLv, nextLv } = data;
   const progress = (totalExp / requiredExp) * 100;
   const leftExp = requiredExp - totalExp;

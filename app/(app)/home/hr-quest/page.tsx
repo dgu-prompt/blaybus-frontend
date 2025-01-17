@@ -32,7 +32,6 @@ export default async function Page() {
       }) || [];
   const lastData = filteredData.at(-1);
   const detailString = lastData?.expType === "HR_FIRST" ? "상반기" : "하반기";
-  console.log(filteredData);
 
   // 등급별 expDo 계산 함수
   const calculateExpDo = (tier: string | undefined) => {
@@ -54,28 +53,6 @@ export default async function Page() {
     fill: "hsl(var(--chart-4))", // fill 고정
   }));
 
-  console.log(chartData);
-
-  // // 차트 데이터 생성
-  // const chartData = quest.questsProgress.map((progress) => ({
-  //   period: progress.period,
-  //   expDo:
-  //     progress.status === "MAX"
-  //       ? quest.maxExpDo
-  //       : progress.status === "MEDIUM"
-  //         ? quest.medianExpDo
-  //         : 1,
-  //   fill:
-  //     progress.status === "MAX"
-  //       ? "hsla(var(--chart-2) / 0.5)"
-  //       : progress.status === "MEDIUM"
-  //         ? "hsl(var(--chart-2))"
-  //         : "hsl(var(--chart-2))",
-  // }));
-
-  // const chartTicks = [0, quest.medianExpDo, quest.maxExpDo];
-  // const periodString = quest.frequencyType == "WEEK" ? "주차" : "월";
-  // const detailString = `${currentPeriod?.period || "-"}${periodString}`;
   const lastExpDo = calculateExpDo(lastData?.hrTier);
   const fomattedLastExpDo = new Intl.NumberFormat("ko-KR").format(lastExpDo);
   const totalExpDo = filteredData.reduce((total, item) => {
