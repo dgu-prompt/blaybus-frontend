@@ -11,7 +11,7 @@ import {
 const chartConfig = {
   expDo: {
     label: "경험치",
-    color: "hsl(var(--text-foreground))",
+    color: "var(--foreground)",
   },
 } satisfies ChartConfig;
 
