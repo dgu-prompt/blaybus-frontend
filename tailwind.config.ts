@@ -66,6 +66,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      screens: {
+        "custom-400": "400px", // 커스텀 픽셀 지정
+        "custom-600": "600px", // 또 다른 커스텀 브레이크포인트
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

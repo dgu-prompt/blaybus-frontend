@@ -56,11 +56,11 @@ export function ChangeAvatarForm({ user }: { user: User }) {
     <form onSubmit={(e) => e.preventDefault()} className="w-full">
       <List>
         <Section>
-          <div className="grid grid-cols-2 gap-4 py-4">
+          <div className="custom-400:grid-cols-3 custom-600:grid-cols-4 grid grid-cols-2 gap-2 p-4 lg:grid-cols-5 xl:grid-cols-6">
             {availableAvatars.map((avatar) => (
               <label
                 key={avatar}
-                className={`flex flex-1 cursor-pointer items-center justify-center`}
+                className={`flex cursor-pointer items-center justify-center`}
               >
                 <Avatar
                   className={`size-24 border ${selectedAvatar === avatar && "border-blue-500 bg-blue-100"}`}
