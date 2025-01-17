@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <>
-      <NavigationBar title="아바타 변경" />
+      <NavigationBar title="아바타 변경하기" />
       <ChangeAvatarForm user={user} />
     </>
   );

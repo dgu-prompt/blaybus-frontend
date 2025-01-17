@@ -5,6 +5,7 @@ import { NavigationBar } from "@/components/navigation-bar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SettingsButton } from "./_components/settings-button";
 import { getUserInfo } from "./_actions/get-user-info";
+import Link from "next/link";
 
 export default async function Page() {
   const userData = await getUserInfo();
@@ -20,10 +21,12 @@ export default async function Page() {
         <Section>
           <ListItem>
             <div className="flex w-full flex-col items-center justify-center gap-4 py-6">
-              <Avatar className="size-32 border">
-                <AvatarImage src={userData.characterUrl} />
-                <AvatarFallback>{userData.employeeName}</AvatarFallback>
-              </Avatar>
+              <Link href="/you/change-avatar">
+                <Avatar className="size-32 border">
+                  <AvatarImage src={userData.characterUrl} />
+                  <AvatarFallback>{userData.employeeName}</AvatarFallback>
+                </Avatar>
+              </Link>
               <span className="text-xl font-semibold">
                 {userData.employeeName}
               </span>

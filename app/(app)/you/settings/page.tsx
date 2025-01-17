@@ -26,7 +26,7 @@ export default function Page() {
         </Section>
         <Section header="앱 정보">
           <ListItem title="두더디 버전" detail="1.0.0" />
-          <ListLink title="문의하기" href="#" />
+          <ListLink title="문의하기" href="mailto:dgu.prompt@gmail.com" />
         </Section>
         <Section>
           <ListButton title="로그아웃" onClick={handleLogoutAction} />

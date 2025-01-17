@@ -76,7 +76,6 @@ function getFirstChar(str: string) {
 export async function getUserLevelGroup() {
   const userData = await getUserInfo();
   const userLevel = userData.level;
-  console.log(userLevel);
   const userGroup = getFirstChar(userLevel);
   return userGroup;
 }

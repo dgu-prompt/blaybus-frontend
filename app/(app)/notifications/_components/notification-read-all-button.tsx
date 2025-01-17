@@ -6,7 +6,9 @@ export function NotificationReadAllButton() {
   return (
     <Container>
       <Wrapper className="px-safe-or-4">
-        <Button onClick={setNotificationReadAll}>모두 읽음으로 표시</Button>
+        <Button variant="secondary" onClick={setNotificationReadAll}>
+          모두 읽음으로 표시
+        </Button>
       </Wrapper>
     </Container>
   );

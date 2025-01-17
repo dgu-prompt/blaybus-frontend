@@ -59,7 +59,6 @@ export default async function RankingSection() {
               : undefined, // 나머지 항목은 fill 없음
     }),
   );
-  console.log(coloredSlicedRanking);
 
   return (
     <Section header="올해의 성장 랭킹">
