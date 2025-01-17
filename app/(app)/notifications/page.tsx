@@ -7,7 +7,7 @@ import { Container, Wrapper } from "@/components/container";
 import { NotificationListItem } from "./_components/notification-list-item";
 import { NotificationReadAllButton } from "./_components/notification-read-all-button";
 import { PostListItem } from "./_components/post-list-item";
-import { getPosts } from "./_actions/get-posts";
+import { fetchAllPosts } from "./_actions/get-posts";
 import { ListItem } from "@/components/list";
 
 interface Notification {
@@ -30,7 +30,8 @@ interface Post {
 export default async function Page() {
   const { fcmToken } = await getPushNotificationSettings();
   const notifications = await getNotifications();
-  const posts = await getPosts();
+  const posts = await fetchAllPosts();
+  console.log(posts);
 
   // const unreadCount = notifications.filter((n) => !n.isRead).length;
 
@@ -66,7 +67,7 @@ export default async function Page() {
           </Section>
         )}
         <Section header="게시판">
-          {posts.posts.map((post: Post) => (
+          {posts.map((post: Post) => (
             <PostListItem key={post.postId} post={post} />
           ))}
           <div key="0" className="mb-4" />
