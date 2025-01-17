@@ -1,10 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { app as firebaseApp } from "@/lib/firebase";
 import { getMessaging, getToken } from "firebase/messaging";
 import { setFCMTokenCookie } from "../_actions/set-fcm-token-cookie";
-import { VStack } from "@/components/grouped-list";
 import { useEffect, useState } from "react";
 import { storeFCMToken } from "../_actions/store-fcm-token";
 import { toast } from "sonner";
@@ -52,31 +50,23 @@ async function requestNotificationPermission() {
   }
 }
 
-function PushNotificationPermissionNeeded() {
-  return (
-    <VStack>
-      <div className="pb-2 pt-4">푸시 알림을 보내려면 권한이 필요합니다.</div>
-      <Button variant="outline" onClick={requestNotificationPermission}>
-        알림 권한 요청
-      </Button>
-    </VStack>
-  );
-}
-
 export function PushNotificationOnboarding() {
   const [isSupported, setIsSupported] = useState(false);
 
   useEffect(() => {
     if ("serviceWorker" in navigator && "PushManager" in window) {
       setIsSupported(true);
+      requestNotificationPermission(); // 권한 요청
     }
   }, []);
 
   if (!isSupported) {
-    return (
-      <div className="pb-2 pt-4">푸시 알림을 지원하지 않는 브라우저입니다.</div>
-    );
+    return null;
   }
 
-  return <PushNotificationPermissionNeeded />;
+  return (
+    <div className="pb-2 pt-4 font-medium">
+      푸시 알림을 보내려면 권한이 필요합니다.
+    </div>
+  );
 }
