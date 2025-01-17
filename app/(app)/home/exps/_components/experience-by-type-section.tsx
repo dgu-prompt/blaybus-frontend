@@ -59,7 +59,7 @@ export default async function ExperienceByTypeSection() {
                 <span>{expTypeLabel[history.expType]}</span>
               </HStack>
             }
-            detail={history.expDo}
+            detail={new Intl.NumberFormat("ko-KR").format(history.expDo)}
           />
         );
       })}
