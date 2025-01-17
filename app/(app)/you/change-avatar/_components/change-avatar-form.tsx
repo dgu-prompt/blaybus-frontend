@@ -80,7 +80,7 @@ export function ChangeAvatarForm({ user }: { user: User }) {
           </div>
         </Section>
         <Section>
-          <ListButton title="아바타 변경" onClick={handleFormSubmit} />
+          <ListButton title="아바타 변경하기" onClick={handleFormSubmit} />
         </Section>
       </List>
     </form>
